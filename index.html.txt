@@ -120,7 +120,7 @@ footer {
         </div>
     </div>
 
-</div>
+</div> 
 
 <footer>
     As an Amazon Associate I earn from qualifying purchases.
