@@ -1,205 +1,1627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X08VGDNNW7"></script>
+    <meta charset="UTF-8">
 
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-gtag('config', 'G-X08VGDNNW7');
-</script>
-    
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LiveEveryWhere</title>
+    <title>LiveEveryWhere | Home, Travel & Tech Finds</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #333;
-}
+    <meta
+        name="description"
+        content="Discover useful home, kitchen, travel and technology products selected by LiveEveryWhere."
+    >
 
-header {
-    background: white;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
+    <!-- Google Analytics with consent mode -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-header h1 {
-    margin: 0;
-    font-size: 32px;
-}
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-header p {
-    margin: 5px 0 0;
-    color: #777;
-}
+        gtag("consent", "default", {
+            analytics_storage: "denied"
+        });
 
-.container {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-}
+        if (
+            localStorage.getItem(
+                "liveeverywhere-analytics-consent"
+            ) === "accepted"
+        ) {
+            gtag("consent", "update", {
+                analytics_storage: "granted"
+            });
+        }
+    </script>
 
-.product {
-    background: white;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    display: flex;
-    gap: 15px;
-}
+    <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-X08VGDNNW7"
+    ></script>
 
-.product img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+    <script>
+        gtag("js", new Date());
+        gtag("config", "G-X08VGDNNW7");
+    </script>
 
-.product h2 {
-    margin: 0;
-    font-size: 18px;
-}
+    <style>
+        :root {
+            --dark: #172033;
+            --dark-light: #25324c;
+            --orange: #ff9900;
+            --orange-dark: #e68700;
+            --background: #f5f6f8;
+            --white: #ffffff;
+            --text: #222222;
+            --muted: #667085;
+            --border: #e5e7eb;
+            --star: #f5b301;
+            --danger: #e63946;
+            --shadow: 0 12px 30px rgba(23, 32, 51, 0.09);
+        }
 
-.rating {
-    color: #f5a623;
-    margin: 5px 0;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background: #ff9900;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.btn:hover {
-    background: #e68900;
-}
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease;
+        }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    color: #777;
-}
-</style>
+        button,
+        input {
+            font: inherit;
+        }
 
+        img {
+            max-width: 100%;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(23, 32, 51, 0.97);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar {
+            width: min(1180px, 92%);
+            min-height: 72px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand span {
+            color: var(--orange);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: #e7eaf0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .icon-button {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition:
+                border-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .icon-button:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-1px);
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 80px 20px 90px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(255, 153, 0, 0.25),
+                    transparent 34%
+                ),
+                linear-gradient(135deg, #172033, #293855);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .hero-content {
+            width: min(820px, 100%);
+            margin: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 7px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.3rem, 6vw, 4.4rem);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 20px auto 30px;
+            color: #dfe5ee;
+            font-size: 1.08rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 23px;
+            border-radius: 10px;
+            background: var(--orange);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 800;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .hero-button:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
+        /* MAIN */
+
+        .main-container {
+            position: relative;
+            width: min(1180px, 92%);
+            margin: -38px auto 60px;
+        }
+
+        /* SEARCH AND FILTERS */
+
+        .toolbar {
+            margin-bottom: 34px;
+            padding: 24px;
+            border-radius: 18px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .search-wrap {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 17px;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 52px;
+            padding: 0 18px 0 48px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            background: #fafafa;
+            color: #222222;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.12);
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .category-button {
+            padding: 9px 15px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--white);
+            color: var(--dark);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .category-button:hover,
+        .category-button.active {
+            border-color: #172033;
+            background: #172033;
+            color: #ffffff;
+        }
+
+        /* SECTION HEADING */
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: var(--dark);
+            font-size: clamp(1.7rem, 4vw, 2.35rem);
+        }
+
+        .section-heading p {
+            margin: 7px 0 0;
+            color: var(--muted);
+        }
+
+        /* PRODUCT GRID */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 18px;
+            background: var(--white);
+            box-shadow: 0 7px 24px rgba(23, 32, 51, 0.07);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-image-wrap {
+            position: relative;
+            height: 270px;
+            padding: 22px;
+            background: linear-gradient(145deg, #fafafa, #f0f2f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #172033;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .product-badge.orange {
+            background: var(--orange);
+        }
+
+        .favourite-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 3;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            color: #667085;
+            cursor: pointer;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            transition:
+                transform 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .favourite-button:hover {
+            transform: scale(1.06);
+        }
+
+        .favourite-button.active {
+            color: var(--danger);
+        }
+
+        .product-content {
+            padding: 23px;
+        }
+
+        .product-category {
+            margin-bottom: 7px;
+            color: var(--orange-dark);
+            font-size: 0.77rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            min-height: 55px;
+            margin: 0;
+            color: var(--dark);
+            font-size: 1.25rem;
+            line-height: 1.35;
+        }
+
+        .rating {
+            margin: 11px 0 10px;
+            color: var(--star);
+            letter-spacing: 2px;
+        }
+
+        .product-description {
+            min-height: 78px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.96rem;
+        }
+
+        .amazon-button {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            background: var(--orange);
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 800;
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .amazon-button:hover {
+            background: var(--orange-dark);
+            transform: translateY(-1px);
+        }
+
+        .no-results {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 44px 20px;
+            border-radius: 16px;
+            background: var(--white);
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* DISCLOSURE */
+
+        .disclosure {
+            margin-top: 45px;
+            padding: 20px;
+            border: 1px solid #f1ddb9;
+            border-radius: 14px;
+            background: #fff9ef;
+            color: #6e5428;
+            font-size: 0.9rem;
+        }
+
+        /* ABOUT AND PRIVACY */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--white);
+            box-shadow: 0 7px 24px rgba(23, 32, 51, 0.06);
+        }
+
+        .info-card h2 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+
+        .info-card p {
+            color: var(--muted);
+        }
+
+        /* COOKIE NOTICE */
+
+        .cookie-notice {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 2000;
+            width: min(430px, calc(100% - 40px));
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--white);
+            color: var(--text);
+            box-shadow: var(--shadow);
+        }
+
+        .cookie-notice h3 {
+            margin: 0 0 7px;
+            color: var(--dark);
+        }
+
+        .cookie-notice p {
+            margin: 0 0 15px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .cookie-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .cookie-button {
+            padding: 9px 15px;
+            border: 0;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .cookie-accept {
+            background: var(--orange);
+            color: #ffffff;
+        }
+
+        .cookie-decline {
+            background: var(--background);
+            color: var(--text);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 45px 20px 25px;
+            background: #172033;
+            color: #dce2eb;
+        }
+
+        .footer-container {
+            width: min(1180px, 92%);
+            margin: auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        .footer-brand span {
+            color: var(--orange);
+        }
+
+        .footer-text {
+            max-width: 650px;
+            margin: 10px auto 20px;
+            color: #aeb8c7;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: #dce2eb;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8f9aad;
+            font-size: 0.84rem;
+        }
+
+        /* DARK MODE */
+
+        body.dark-mode {
+            --dark: #f5f7fb;
+            --dark-light: #d9e0ea;
+            --background: #101521;
+            --white: #192131;
+            --text: #f5f7fb;
+            --muted: #b8c1cf;
+            --border: #344055;
+            --shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .site-header,
+        body.dark-mode footer {
+            background: #090d16;
+        }
+
+        body.dark-mode .hero {
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(255, 153, 0, 0.18),
+                    transparent 34%
+                ),
+                linear-gradient(135deg, #090d16, #182135);
+        }
+
+        body.dark-mode .search-input {
+            background: #111827;
+            color: #ffffff;
+        }
+
+        body.dark-mode .product-image-wrap {
+            background: #222c3d;
+        }
+
+        body.dark-mode .disclosure {
+            border-color: #5b4825;
+            background: #2b2519;
+            color: #f3d69a;
+        }
+
+        body.dark-mode .category-button:hover,
+        body.dark-mode .category-button.active {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: #ffffff;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .product-grid,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-title,
+            .product-description {
+                min-height: auto;
+            }
+
+            .hero {
+                padding-top: 65px;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 520px) {
+            .navbar {
+                min-height: 64px;
+            }
+
+            .brand {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 55px 18px 75px;
+            }
+
+            .main-container {
+                width: 94%;
+                margin-top: -28px;
+            }
+
+            .toolbar {
+                padding: 16px;
+            }
+
+            .product-image-wrap {
+                height: 230px;
+            }
+
+            .product-content {
+                padding: 19px;
+            }
+
+            .categories {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+
+            .category-button {
+                white-space: nowrap;
+            }
+
+            .cookie-notice {
+                right: 12px;
+                bottom: 12px;
+                width: calc(100% - 24px);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <h1>LiveEveryWhere</h1>
-    <p>Discover Products Worth Buying</p>
-</header>
+    <header class="site-header">
+        <nav class="navbar">
 
-<div class="container">
+            <a class="brand" href="#top">
+                LiveEvery<span>Where</span>
+            </a>
 
-    <!-- PRODUCT 1 -->
-    <div class="product">
-        <img src="images/fan.png" alt="Portable Rechargeable Fan">
-        <div>
-            <h2>Portable Rechargeable Fan</h2>
-            <div class="rating">⭐⭐⭐⭐⭐</div>
-            <p>Stay cool anywhere — perfect for home, office, and travel.</p>
-            <a class="btn" href="https://amzn.to/4gSEkDY" target="_blank" rel="noopener sponsored">View on Amazon</a>
+            <div class="header-actions">
+
+                <div class="nav-links">
+                    <a href="#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#privacy">Privacy</a>
+                </div>
+
+                <button
+                    id="themeToggle"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Switch colour theme"
+                    title="Switch colour theme"
+                >
+                    🌙
+                </button>
+
+            </div>
+
+        </nav>
+    </header>
+
+    <main id="top">
+
+        <section class="hero">
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    Smart products for everyday life
+                </div>
+
+                <h1>
+                    Discover useful finds for
+                    <span>home, travel and tech.</span>
+                </h1>
+
+                <p>
+                    Explore carefully selected products designed to make
+                    everyday life easier, more organised and more enjoyable.
+                </p>
+
+                <a class="hero-button" href="#products">
+                    Browse Products
+                </a>
+
+            </div>
+        </section>
+
+        <div class="main-container">
+
+            <section
+                class="toolbar"
+                aria-label="Product search and filters"
+            >
+
+                <div class="search-wrap">
+
+                    <span class="search-icon">🔍</span>
+
+                    <input
+                        id="productSearch"
+                        class="search-input"
+                        type="search"
+                        placeholder="Search products..."
+                        aria-label="Search products"
+                    >
+
+                </div>
+
+                <div class="categories">
+
+                    <button
+                        class="category-button active"
+                        data-category="all"
+                        type="button"
+                    >
+                        All Products
+                    </button>
+
+                    <button
+                        class="category-button"
+                        data-category="favourites"
+                        type="button"
+                    >
+                        ♥ My Favourites
+                    </button>
+
+                    <button
+                        class="category-button"
+                        data-category="home"
+                        type="button"
+                    >
+                        Home
+                    </button>
+
+                    <button
+                        class="category-button"
+                        data-category="travel"
+                        type="button"
+                    >
+                        Travel
+                    </button>
+
+                    <button
+                        class="category-button"
+                        data-category="tech"
+                        type="button"
+                    >
+                        Tech
+                    </button>
+
+                    <button
+                        class="category-button"
+                        data-category="kitchen"
+                        type="button"
+                    >
+                        Kitchen
+                    </button>
+
+                </div>
+
+            </section>
+
+            <section id="products">
+
+                <div class="section-heading">
+                    <h2>Featured Products</h2>
+
+                    <p>
+                        Browse our latest home, travel, kitchen and
+                        technology picks.
+                    </p>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+
+                    <!-- PRODUCT 1 -->
+                    <article
+                        class="product-card"
+                        data-category="travel tech"
+                        data-name="portable rechargeable fan"
+                        data-favourite="false"
+                    >
+
+                        <div class="product-image-wrap">
+
+                            <button
+                                class="favourite-button"
+                                type="button"
+                                aria-label="Add Portable Rechargeable Fan to favourites"
+                            >
+                                ♥
+                            </button>
+
+                            <span class="product-badge orange">
+                                Popular Pick
+                            </span>
+
+                            <img
+                                class="product-image"
+                                src="images/fan.png"
+                                alt="Portable Rechargeable Fan"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <div class="product-category">
+                                Travel & Tech
+                            </div>
+
+                            <h3 class="product-title">
+                                Portable Rechargeable Fan
+                            </h3>
+
+                            <div
+                                class="rating"
+                                aria-label="Five-star rating"
+                            >
+                                ★★★★★
+                            </div>
+
+                            <p class="product-description">
+                                Stay cool wherever you go with a compact,
+                                rechargeable fan for home, office and travel.
+                            </p>
+
+                            <a
+                                class="amazon-button"
+                                href="https://amzn.to/4gSEkDY"
+                                target="_blank"
+                                rel="noopener sponsored"
+                                data-product="Portable Rechargeable Fan"
+                            >
+                                View on Amazon
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <!-- PRODUCT 2 -->
+                    <article
+                        class="product-card"
+                        data-category="home travel"
+                        data-name="vacuum storage bags compression packing"
+                        data-favourite="false"
+                    >
+
+                        <div class="product-image-wrap">
+
+                            <button
+                                class="favourite-button"
+                                type="button"
+                                aria-label="Add Vacuum Storage Bags to favourites"
+                            >
+                                ♥
+                            </button>
+
+                            <span class="product-badge">
+                                Space Saver
+                            </span>
+
+                            <img
+                                class="product-image"
+                                src="images/Vacuum bag.png"
+                                alt="Vacuum Storage Bags"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <div class="product-category">
+                                Home & Travel
+                            </div>
+
+                            <h3 class="product-title">
+                                Vacuum Storage Bags
+                            </h3>
+
+                            <div
+                                class="rating"
+                                aria-label="Five-star rating"
+                            >
+                                ★★★★★
+                            </div>
+
+                            <p class="product-description">
+                                Save valuable storage space while organising
+                                clothes, bedding and travel essentials.
+                            </p>
+
+                            <a
+                                class="amazon-button"
+                                href="https://amzn.to/4vga2hX"
+                                target="_blank"
+                                rel="noopener sponsored"
+                                data-product="Vacuum Storage Bags"
+                            >
+                                View on Amazon
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <!-- PRODUCT 3 -->
+                    <article
+                        class="product-card"
+                        data-category="tech home"
+                        data-name="bluetooth speaker phone stand led clock"
+                        data-favourite="false"
+                    >
+
+                        <div class="product-image-wrap">
+
+                            <button
+                                class="favourite-button"
+                                type="button"
+                                aria-label="Add Bluetooth Speaker to favourites"
+                            >
+                                ♥
+                            </button>
+
+                            <span class="product-badge orange">
+                                Multi-Use
+                            </span>
+
+                            <img
+                                class="product-image"
+                                src="images/bluetooth-speaker.jpeg"
+                                alt="Bluetooth Speaker with Phone Stand and LED Clock"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <div class="product-category">
+                                Tech
+                            </div>
+
+                            <h3 class="product-title">
+                                3-in-1 Bluetooth Speaker, Phone Stand and
+                                LED Clock
+                            </h3>
+
+                            <div
+                                class="rating"
+                                aria-label="Five-star rating"
+                            >
+                                ★★★★★
+                            </div>
+
+                            <p class="product-description">
+                                A useful desk accessory combining a Bluetooth
+                                speaker, adjustable phone holder and digital clock.
+                            </p>
+
+                            <a
+                                class="amazon-button"
+                                href="https://www.amazon.co.uk/dp/B0D8VV27NN?linkCode=sl1&amp;tag=123008f4-21&amp;linkId=ba51dc2b8f8e32ff0e1fd854c6536b0a"
+                                target="_blank"
+                                rel="noopener sponsored"
+                                data-product="Bluetooth Speaker Phone Stand and LED Clock"
+                            >
+                                View on Amazon
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <!-- PRODUCT 4 -->
+                    <article
+                        class="product-card"
+                        data-category="kitchen home"
+                        data-name="reusable gas hob protectors cooker protectors"
+                        data-favourite="false"
+                    >
+
+                        <div class="product-image-wrap">
+
+                            <button
+                                class="favourite-button"
+                                type="button"
+                                aria-label="Add Gas Hob Protectors to favourites"
+                            >
+                                ♥
+                            </button>
+
+                            <span class="product-badge">
+                                Kitchen Pick
+                            </span>
+
+                            <img
+                                class="product-image"
+                                src="images/hob-protectors.png"
+                                alt="Reusable Gas Hob Protectors"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <div class="product-category">
+                                Kitchen
+                            </div>
+
+                            <h3 class="product-title">
+                                Reusable Gas Hob Protectors
+                            </h3>
+
+                            <div
+                                class="rating"
+                                aria-label="Five-star rating"
+                            >
+                                ★★★★★
+                            </div>
+
+                            <p class="product-description">
+                                Help protect your cooker from food, grease and
+                                spills with reusable non-stick hob covers.
+                            </p>
+
+                            <a
+                                class="amazon-button"
+                                href="https://www.amazon.co.uk/dp/B09CDG6HQN?linkCode=ml1&amp;tag=123008f4-21&amp;linkId=0ed797e7c34ad197cdfa9fdbe0e3abd9"
+                                target="_blank"
+                                rel="noopener sponsored"
+                                data-product="Reusable Gas Hob Protectors"
+                            >
+                                View on Amazon
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <!-- PRODUCT 5 -->
+                    <article
+                        class="product-card"
+                        data-category="home"
+                        data-name="featured home gadget lifestyle product"
+                        data-favourite="false"
+                    >
+
+                        <div class="product-image-wrap">
+
+                            <button
+                                class="favourite-button"
+                                type="button"
+                                aria-label="Add Featured Home Gadget to favourites"
+                            >
+                                ♥
+                            </button>
+
+                            <span class="product-badge orange">
+                                Featured Pick
+                            </span>
+
+                            <img
+                                class="product-image"
+                                src="images/featured-gadget.png"
+                                alt="Featured Home Gadget"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <div class="product-category">
+                                Home
+                            </div>
+
+                            <h3 class="product-title">
+                                Featured Home Gadget
+                            </h3>
+
+                            <div
+                                class="rating"
+                                aria-label="Five-star rating"
+                            >
+                                ★★★★★
+                            </div>
+
+                            <p class="product-description">
+                                A practical everyday product selected for
+                                convenient home and lifestyle use.
+                            </p>
+
+                            <a
+                                class="amazon-button"
+                                href="https://www.amazon.co.uk/dp/B0CRH8XXMW?linkCode=ml1&amp;tag=123008f4-21&amp;linkId=2029e6300b73d7d3521d6bceffe6a5ef"
+                                target="_blank"
+                                rel="noopener sponsored"
+                                data-product="Featured Home Gadget"
+                            >
+                                View on Amazon
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <div class="no-results" id="noResults">
+                        <strong>No matching products found.</strong>
+                        <br>
+                        Try another search or category.
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="disclosure" id="disclosure">
+                <strong>Affiliate disclosure:</strong>
+                As an Amazon Associate, LiveEveryWhere earns from
+                qualifying purchases. This does not increase the
+                price you pay.
+            </section>
+
+            <section class="info-grid">
+
+                <article class="info-card" id="about">
+
+                    <h2>About LiveEveryWhere</h2>
+
+                    <p>
+                        LiveEveryWhere shares carefully selected ideas
+                        for useful home, kitchen, travel and technology
+                        products.
+                    </p>
+
+                    <p>
+                        Our aim is to help visitors discover practical
+                        products that may make everyday life easier and
+                        more organised.
+                    </p>
+
+                </article>
+
+                <article class="info-card" id="privacy">
+
+                    <h2>Privacy Policy</h2>
+
+                    <p>
+                        LiveEveryWhere uses Google Analytics only after
+                        a visitor accepts analytics cookies. Analytics
+                        may collect general information such as page
+                        visits, device type and outbound-link interactions.
+                    </p>
+
+                    <p>
+                        We do not ask visitors to submit names, addresses,
+                        payment information or other sensitive personal
+                        information through this website.
+                    </p>
+
+                    <p>
+                        Product buttons may take visitors to third-party
+                        websites, including Amazon, which operate under
+                        their own privacy and cookie policies.
+                    </p>
+
+                </article>
+
+            </section>
+
         </div>
-    </div>
 
-    <!-- PRODUCT 2 -->
-    <div class="product">
-        <img src="images/Vacuum bag.png" alt="Vacuum Storage Bags">
-        <div>
-            <h2>Vacuum Storage Bags</h2>
-            <div class="rating">⭐⭐⭐⭐⭐</div>
-            <p>Save up to 80% storage space for clothes and travel packing.</p>
-            <a class="btn" href="https://amzn.to/4vga2hX" target="_blank" rel="noopener sponsored">View on Amazon</a>
+    </main>
+
+    <footer id="footer">
+
+        <div class="footer-container">
+
+            <h2 class="footer-brand">
+                LiveEvery<span>Where</span>
+            </h2>
+
+            <p class="footer-text">
+                Discover practical product ideas for your home,
+                kitchen, travel and everyday lifestyle.
+            </p>
+
+            <div class="footer-links">
+                <a href="#top">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#disclosure">Affiliate Disclosure</a>
+            </div>
+
+            <div class="copyright">
+                © <span id="currentYear"></span> LiveEveryWhere.
+                All rights reserved.
+            </div>
+
         </div>
-    </div>
 
-    <!-- PRODUCT 3 -->
-<div class="product">
-    <img src="images/bluetooth-speaker.jpeg"
-         alt="Bluetooth Speaker with Phone Stand and LED Clock">
+    </footer>
 
-    <div>
-        <h2>3-in-1 Bluetooth Speaker, Phone Stand and LED Clock</h2>
+    <div
+        class="cookie-notice"
+        id="cookieNotice"
+        role="dialog"
+        aria-label="Analytics cookie choice"
+    >
 
-        <div class="rating">⭐⭐⭐⭐⭐</div>
-
-        <p>
-            A useful desk gadget combining a Bluetooth speaker,
-            adjustable phone holder and digital LED clock.
-        </p>
-
-        <a class="btn"
-           href="https://www.amazon.co.uk/dp/B0D8VV27NN?linkCode=sl1&tag=123008f4-21&linkId=ba51dc2b8f8e32ff0e1fd854c6536b0a"
-           target="_blank" rel="noopener sponsored"> View on Amazon </a>
-    </div>
-</div>
-
-
-<!-- PRODUCT 4 -->
-<div class="product">
-    <img src="images/hob-protectors.png"
-         alt="Reusable Gas Hob Protectors">
-
-    <div>
-        <h2>Reusable Gas Hob Protectors</h2>
-
-        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <h3>Analytics cookies</h3>
 
         <p>
-            Reusable non-stick hob protectors designed to help keep
-            your cooker surface clean from spills, grease and food.
+            We use Google Analytics to understand website visits
+            and product-link interactions. Analytics will only be
+            enabled after you select Accept.
         </p>
 
-        <a class="btn"
-           href="https://www.amazon.co.uk/dp/B09CDG6HQN?linkCode=ml1&tag=123008f4-21&linkId=0ed797e7c34ad197cdfa9fdbe0e3abd9"
-           target="_blank" rel="noopener sponsored"> View on Amazon </a>
+        <div class="cookie-actions">
+
+            <button
+                class="cookie-button cookie-accept"
+                id="acceptAnalytics"
+                type="button"
+            >
+                Accept
+            </button>
+
+            <button
+                class="cookie-button cookie-decline"
+                id="declineAnalytics"
+                type="button"
+            >
+                Decline
+            </button>
+
+        </div>
+
     </div>
-</div>
 
+    <script>
+        const searchInput =
+            document.getElementById("productSearch");
 
-<!-- PRODUCT 5 -->
-<div class="product">
-    <img src="images/featured-gadget.png"
-         alt="Featured Home Gadget">
+        const categoryButtons =
+            document.querySelectorAll(".category-button");
 
-    <div>
-        <h2>Featured Home Gadget</h2>
+        const productCards =
+            document.querySelectorAll(".product-card");
 
-        <div class="rating">⭐⭐⭐⭐⭐</div>
+        const noResults =
+            document.getElementById("noResults");
 
-        <p>
-            A practical product selected for everyday home,
-            lifestyle or travel use.
-        </p>
+        const themeToggle =
+            document.getElementById("themeToggle");
 
-        <a class="btn"
-           href="https://www.amazon.co.uk/dp/B0CRH8XXMW?linkCode=ml1&tag=123008f4-21&linkId=2029e6300b73d7d3521d6bceffe6a5ef"
-           target="_blank" rel="noopener sponsored"> View on Amazon </a>
-    </div>
-</div>
-</div> 
+        const cookieNotice =
+            document.getElementById("cookieNotice");
 
-<footer>
-    As an Amazon Associate I earn from qualifying purchases.
-</footer>
+        let selectedCategory = "all";
+
+        function getSavedFavourites() {
+            try {
+                return JSON.parse(
+                    localStorage.getItem(
+                        "liveeverywhere-favourites"
+                    )
+                ) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function filterProducts() {
+            const searchTerm =
+                searchInput.value.toLowerCase().trim();
+
+            let visibleProducts = 0;
+
+            productCards.forEach((card) => {
+                const productName =
+                    card.dataset.name.toLowerCase();
+
+                const categories =
+                    card.dataset.category.toLowerCase();
+
+                const isFavourite =
+                    card.dataset.favourite === "true";
+
+                const matchesSearch =
+                    productName.includes(searchTerm);
+
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    categories.includes(selectedCategory) ||
+                    (
+                        selectedCategory === "favourites" &&
+                        isFavourite
+                    );
+
+                const shouldShow =
+                    matchesSearch && matchesCategory;
+
+                card.style.display =
+                    shouldShow ? "block" : "none";
+
+                if (shouldShow) {
+                    visibleProducts++;
+                }
+            });
+
+            noResults.style.display =
+                visibleProducts === 0
+                    ? "block"
+                    : "none";
+        }
+
+        searchInput.addEventListener(
+            "input",
+            filterProducts
+        );
+
+        categoryButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                categoryButtons.forEach((item) => {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                selectedCategory =
+                    button.dataset.category;
+
+                filterProducts();
+            });
+        });
+
+        const savedFavourites =
+            getSavedFavourites();
+
+        document
+            .querySelectorAll(".favourite-button")
+            .forEach((button) => {
+                const card =
+                    button.closest(".product-card");
+
+                const productName =
+                    card.dataset.name;
+
+                if (
+                    savedFavourites.includes(productName)
+                ) {
+                    button.classList.add("active");
+                    card.dataset.favourite = "true";
+                }
+
+                button.addEventListener(
+                    "click",
+                    () => {
+                        button.classList.toggle("active");
+
+                        const isFavourite =
+                            button.classList.contains(
+                                "active"
+                            );
+
+                        card.dataset.favourite =
+                            String(isFavourite);
+
+                        let favourites =
+                            getSavedFavourites();
+
+                        if (
+                            isFavourite &&
+                            !favourites.includes(productName)
+                        ) {
+                            favourites.push(productName);
+                        }
+
+                        if (!isFavourite) {
+                            favourites =
+                                favourites.filter(
+                                    (item) =>
+                                        item !== productName
+                                );
+                        }
+
+                        localStorage.setItem(
+                            "liveeverywhere-favourites",
+                            JSON.stringify(favourites)
+                        );
+
+                        filterProducts();
+                    }
+                );
+            });
+
+        document
+            .querySelectorAll(".amazon-button")
+            .forEach((button) => {
+                button.addEventListener("click", () => {
+                    const productName =
+                        button.dataset.product;
+
+                    if (typeof gtag === "function") {
+                        gtag("event", "amazon_click", {
+                            product_name: productName,
+                            link_location: "product_card"
+                        });
+                    }
+                });
+            });
+
+        const savedTheme =
+            localStorage.getItem(
+                "liveeverywhere-theme"
+            );
+
+        if (savedTheme === "dark") {
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            themeToggle.textContent = "☀️";
+        }
+
+        themeToggle.addEventListener(
+            "click",
+            () => {
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+                const darkModeEnabled =
+                    document.body.classList.contains(
+                        "dark-mode"
+                    );
+
+                themeToggle.textContent =
+                    darkModeEnabled ? "☀️" : "🌙";
+
+                localStorage.setItem(
+                    "liveeverywhere-theme",
+                    darkModeEnabled
+                        ? "dark"
+                        : "light"
+                );
+            }
+        );
+
+        const analyticsConsent =
+            localStorage.getItem(
+                "liveeverywhere-analytics-consent"
+            );
+
+        if (
+            analyticsConsent === "accepted" ||
+            analyticsConsent === "declined"
+        ) {
+            cookieNotice.style.display = "none";
+        }
+
+        document
+            .getElementById("acceptAnalytics")
+            .addEventListener("click", () => {
+                localStorage.setItem(
+                    "liveeverywhere-analytics-consent",
+                    "accepted"
+                );
+
+                gtag("consent", "update", {
+                    analytics_storage: "granted"
+                });
+
+                gtag("event", "analytics_consent", {
+                    consent_choice: "accepted"
+                });
+
+                cookieNotice.style.display = "none";
+            });
+
+        document
+            .getElementById("declineAnalytics")
+            .addEventListener("click", () => {
+                localStorage.setItem(
+                    "liveeverywhere-analytics-consent",
+                    "declined"
+                );
+
+                gtag("consent", "update", {
+                    analytics_storage: "denied"
+                });
+
+                cookieNotice.style.display = "none";
+            });
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+        filterProducts();
+    </script>
 
 </body>
 </html>
