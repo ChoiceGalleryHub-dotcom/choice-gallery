@@ -8,14 +8,40 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>LiveEveryWhere | Home, Travel & Tech Finds</title>
+    <title>LiveEveryWhere | Useful Home, Travel & Tech Finds</title>
 
     <meta
         name="description"
         content="Discover useful home, kitchen, travel and technology products selected by LiveEveryWhere."
     >
 
-    <!-- Google Analytics with consent mode -->
+    <meta name="robots" content="index, follow">
+
+    <link
+        rel="canonical"
+        href="https://choicegalleryhub-dotcom.github.io/choice-gallery/"
+    >
+
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LiveEveryWhere">
+    <meta
+        property="og:description"
+        content="Discover practical product ideas for home, kitchen, travel and technology."
+    >
+    <meta
+        property="og:url"
+        content="https://choicegalleryhub-dotcom.github.io/choice-gallery/"
+    >
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LiveEveryWhere">
+    <meta
+        name="twitter:description"
+        content="Useful home, kitchen, travel and technology product finds."
+    >
+
+    <!-- Google Analytics consent -->
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -48,19 +74,37 @@
         gtag("config", "G-X08VGDNNW7");
     </script>
 
+    <!-- Basic website structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LiveEveryWhere",
+        "url": "https://choicegalleryhub-dotcom.github.io/choice-gallery/",
+        "description": "Useful home, kitchen, travel and technology product ideas.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://choicegalleryhub-dotcom.github.io/choice-gallery/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
     <style>
         :root {
-            --dark: #172033;
-            --dark-light: #25324c;
+            --navy: #172033;
+            --navy-light: #25324c;
             --orange: #ff9900;
             --orange-dark: #e68700;
             --background: #f5f6f8;
-            --white: #ffffff;
+            --surface: #ffffff;
             --text: #222222;
+            --heading: #172033;
             --muted: #667085;
             --border: #e5e7eb;
             --star: #f5b301;
             --danger: #e63946;
+            --success: #16825d;
             --shadow: 0 12px 30px rgba(23, 32, 51, 0.09);
         }
 
@@ -83,13 +127,30 @@
                 color 0.25s ease;
         }
 
+        body.menu-open {
+            overflow: hidden;
+        }
+
         button,
-        input {
+        input,
+        select {
             font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
         }
 
         img {
             max-width: 100%;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 3px solid rgba(255, 153, 0, 0.45);
+            outline-offset: 3px;
         }
 
         /* HEADER */
@@ -98,7 +159,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(23, 32, 51, 0.97);
+            background: rgba(23, 32, 51, 0.98);
             color: #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
         }
@@ -110,7 +171,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
+            gap: 20px;
         }
 
         .brand {
@@ -119,6 +180,7 @@
             font-size: 1.45rem;
             font-weight: 800;
             letter-spacing: -0.5px;
+            white-space: nowrap;
         }
 
         .brand span {
@@ -128,7 +190,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .nav-links {
@@ -148,9 +210,12 @@
             color: var(--orange);
         }
 
-        .icon-button {
+        .round-button {
             width: 42px;
             height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.28);
             border-radius: 50%;
             background: transparent;
@@ -163,16 +228,52 @@
                 transform 0.2s ease;
         }
 
-        .icon-button:hover {
+        .round-button:hover {
             border-color: var(--orange);
             color: var(--orange);
             transform: translateY(-1px);
         }
 
+        .menu-button {
+            display: none;
+        }
+
+        /* MOBILE MENU */
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            padding: 24px;
+            background: rgba(9, 13, 22, 0.98);
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 16px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--orange);
+        }
+
         /* HERO */
 
         .hero {
-            padding: 80px 20px 90px;
+            padding: 80px 20px 95px;
             background:
                 radial-gradient(
                     circle at top right,
@@ -185,7 +286,7 @@
         }
 
         .hero-content {
-            width: min(820px, 100%);
+            width: min(850px, 100%);
             margin: auto;
         }
 
@@ -212,18 +313,24 @@
         }
 
         .hero p {
-            max-width: 680px;
+            max-width: 700px;
             margin: 20px auto 30px;
             color: #dfe5ee;
             font-size: 1.08rem;
         }
 
-        .hero-button {
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .primary-button,
+        .secondary-button {
             display: inline-block;
             padding: 13px 23px;
             border-radius: 10px;
-            background: var(--orange);
-            color: #ffffff;
             text-decoration: none;
             font-weight: 800;
             transition:
@@ -231,8 +338,24 @@
                 background 0.2s ease;
         }
 
-        .hero-button:hover {
+        .primary-button {
+            background: var(--orange);
+            color: #ffffff;
+        }
+
+        .primary-button:hover {
             background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-button {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.16);
             transform: translateY(-2px);
         }
 
@@ -241,17 +364,23 @@
         .main-container {
             position: relative;
             width: min(1180px, 92%);
-            margin: -38px auto 60px;
+            margin: -42px auto 60px;
         }
 
-        /* SEARCH AND FILTERS */
+        /* TOOLBAR */
 
         .toolbar {
             margin-bottom: 34px;
             padding: 24px;
             border-radius: 18px;
-            background: var(--white);
+            background: var(--surface);
             box-shadow: var(--shadow);
+        }
+
+        .toolbar-top {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 220px;
+            gap: 14px;
         }
 
         .search-wrap {
@@ -266,10 +395,10 @@
             font-size: 1.2rem;
         }
 
-        .search-input {
+        .search-input,
+        .sort-select {
             width: 100%;
             height: 52px;
-            padding: 0 18px 0 48px;
             border: 1px solid var(--border);
             border-radius: 12px;
             outline: none;
@@ -278,7 +407,17 @@
             font-size: 1rem;
         }
 
-        .search-input:focus {
+        .search-input {
+            padding: 0 18px 0 48px;
+        }
+
+        .sort-select {
+            padding: 0 14px;
+            cursor: pointer;
+        }
+
+        .search-input:focus,
+        .sort-select:focus {
             border-color: var(--orange);
             box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.12);
         }
@@ -294,8 +433,8 @@
             padding: 9px 15px;
             border: 1px solid var(--border);
             border-radius: 999px;
-            background: var(--white);
-            color: var(--dark);
+            background: var(--surface);
+            color: var(--heading);
             cursor: pointer;
             font-weight: 700;
             transition: all 0.2s ease;
@@ -303,9 +442,78 @@
 
         .category-button:hover,
         .category-button.active {
-            border-color: #172033;
-            background: #172033;
+            border-color: var(--navy);
+            background: var(--navy);
             color: #ffffff;
+        }
+
+        .results-summary {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .clear-button {
+            border: 0;
+            background: transparent;
+            color: var(--orange-dark);
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* RECENTLY VIEWED */
+
+        .recent-section {
+            display: none;
+            margin-bottom: 34px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: 0 7px 24px rgba(23, 32, 51, 0.05);
+        }
+
+        .recent-section.visible {
+            display: block;
+        }
+
+        .recent-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 15px;
+        }
+
+        .recent-header h2 {
+            margin: 0;
+            color: var(--heading);
+            font-size: 1.25rem;
+        }
+
+        .recent-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .recent-item {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--background);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .recent-item:hover {
+            border-color: var(--orange);
+            color: var(--orange-dark);
         }
 
         /* SECTION HEADING */
@@ -316,7 +524,7 @@
 
         .section-heading h2 {
             margin: 0;
-            color: var(--dark);
+            color: var(--heading);
             font-size: clamp(1.7rem, 4vw, 2.35rem);
         }
 
@@ -336,9 +544,9 @@
         .product-card {
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(229, 231, 235, 0.8);
+            border: 1px solid var(--border);
             border-radius: 18px;
-            background: var(--white);
+            background: var(--surface);
             box-shadow: 0 7px 24px rgba(23, 32, 51, 0.07);
             transition:
                 transform 0.25s ease,
@@ -374,7 +582,7 @@
             z-index: 2;
             padding: 6px 10px;
             border-radius: 999px;
-            background: #172033;
+            background: var(--navy);
             color: #ffffff;
             font-size: 0.75rem;
             font-weight: 800;
@@ -384,27 +592,36 @@
             background: var(--orange);
         }
 
-        .favourite-button {
+        .card-actions {
             position: absolute;
             top: 15px;
             right: 15px;
             z-index: 3;
+            display: flex;
+            gap: 8px;
+        }
+
+        .card-icon-button {
             width: 42px;
             height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             border: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.96);
             color: #667085;
             cursor: pointer;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
             transition:
                 transform 0.2s ease,
                 color 0.2s ease;
         }
 
-        .favourite-button:hover {
+        .card-icon-button:hover {
             transform: scale(1.06);
+            color: var(--orange-dark);
         }
 
         .favourite-button.active {
@@ -427,7 +644,7 @@
         .product-title {
             min-height: 55px;
             margin: 0;
-            color: var(--dark);
+            color: var(--heading);
             font-size: 1.25rem;
             line-height: 1.35;
         }
@@ -438,6 +655,13 @@
             letter-spacing: 2px;
         }
 
+        .rating-note {
+            margin-left: 4px;
+            color: var(--muted);
+            letter-spacing: 0;
+            font-size: 0.78rem;
+        }
+
         .product-description {
             min-height: 78px;
             margin: 0;
@@ -445,10 +669,15 @@
             font-size: 0.96rem;
         }
 
+        .product-button-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
         .amazon-button {
             display: block;
-            width: 100%;
-            margin-top: 20px;
             padding: 12px 18px;
             border-radius: 10px;
             background: var(--orange);
@@ -466,17 +695,32 @@
             transform: translateY(-1px);
         }
 
+        .share-text-button {
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            color: var(--heading);
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .share-text-button:hover {
+            border-color: var(--orange);
+            color: var(--orange-dark);
+        }
+
         .no-results {
             display: none;
             grid-column: 1 / -1;
             padding: 44px 20px;
             border-radius: 16px;
-            background: var(--white);
+            background: var(--surface);
             color: var(--muted);
             text-align: center;
         }
 
-        /* DISCLOSURE */
+        /* INFORMATION */
 
         .disclosure {
             margin-top: 45px;
@@ -487,8 +731,6 @@
             color: #6e5428;
             font-size: 0.9rem;
         }
-
-        /* ABOUT AND PRIVACY */
 
         .info-grid {
             display: grid;
@@ -501,17 +743,43 @@
             padding: 26px;
             border: 1px solid var(--border);
             border-radius: 18px;
-            background: var(--white);
+            background: var(--surface);
             box-shadow: 0 7px 24px rgba(23, 32, 51, 0.06);
         }
 
         .info-card h2 {
             margin-top: 0;
-            color: var(--dark);
+            color: var(--heading);
         }
 
         .info-card p {
             color: var(--muted);
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 90px;
+            z-index: 3000;
+            max-width: 340px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            background: var(--navy);
+            color: #ffffff;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(15px);
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* COOKIE NOTICE */
@@ -520,19 +788,19 @@
             position: fixed;
             right: 20px;
             bottom: 20px;
-            z-index: 2000;
+            z-index: 2500;
             width: min(430px, calc(100% - 40px));
             padding: 20px;
             border: 1px solid var(--border);
             border-radius: 16px;
-            background: var(--white);
+            background: var(--surface);
             color: var(--text);
             box-shadow: var(--shadow);
         }
 
         .cookie-notice h3 {
             margin: 0 0 7px;
-            color: var(--dark);
+            color: var(--heading);
         }
 
         .cookie-notice p {
@@ -565,11 +833,40 @@
             color: var(--text);
         }
 
+        /* BACK TO TOP */
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1500;
+            width: 48px;
+            height: 48px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 50%;
+            background: var(--orange);
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background: var(--orange-dark);
+        }
+
         /* FOOTER */
 
         footer {
             padding: 45px 20px 25px;
-            background: #172033;
+            background: var(--navy);
             color: #dce2eb;
         }
 
@@ -622,11 +919,10 @@
         /* DARK MODE */
 
         body.dark-mode {
-            --dark: #f5f7fb;
-            --dark-light: #d9e0ea;
             --background: #101521;
-            --white: #192131;
+            --surface: #192131;
             --text: #f5f7fb;
+            --heading: #f5f7fb;
             --muted: #b8c1cf;
             --border: #344055;
             --shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
@@ -647,13 +943,19 @@
                 linear-gradient(135deg, #090d16, #182135);
         }
 
-        body.dark-mode .search-input {
+        body.dark-mode .search-input,
+        body.dark-mode .sort-select {
             background: #111827;
             color: #ffffff;
         }
 
         body.dark-mode .product-image-wrap {
             background: #222c3d;
+        }
+
+        body.dark-mode .card-icon-button {
+            background: rgba(17, 24, 39, 0.94);
+            color: #d5dbea;
         }
 
         body.dark-mode .disclosure {
@@ -672,8 +974,12 @@
         /* TABLET */
 
         @media (max-width: 800px) {
-            .nav-links {
+            .desktop-nav {
                 display: none;
+            }
+
+            .menu-button {
+                display: inline-flex;
             }
 
             .product-grid,
@@ -693,7 +999,7 @@
 
         /* MOBILE */
 
-        @media (max-width: 520px) {
+        @media (max-width: 600px) {
             .navbar {
                 min-height: 64px;
             }
@@ -703,16 +1009,20 @@
             }
 
             .hero {
-                padding: 55px 18px 75px;
+                padding: 55px 18px 78px;
             }
 
             .main-container {
                 width: 94%;
-                margin-top: -28px;
+                margin-top: -30px;
             }
 
             .toolbar {
                 padding: 16px;
+            }
+
+            .toolbar-top {
+                grid-template-columns: 1fr;
             }
 
             .product-image-wrap {
@@ -726,17 +1036,36 @@
             .categories {
                 flex-wrap: nowrap;
                 overflow-x: auto;
-                padding-bottom: 4px;
+                padding-bottom: 5px;
             }
 
             .category-button {
                 white-space: nowrap;
             }
 
+            .product-button-row {
+                grid-template-columns: 1fr;
+            }
+
+            .results-summary {
+                flex-direction: column;
+            }
+
             .cookie-notice {
                 right: 12px;
                 bottom: 12px;
                 width: calc(100% - 24px);
+            }
+
+            .toast {
+                right: 12px;
+                bottom: 75px;
+                max-width: calc(100% - 24px);
+            }
+
+            .back-to-top {
+                right: 14px;
+                bottom: 14px;
             }
         }
     </style>
@@ -753,7 +1082,7 @@
 
             <div class="header-actions">
 
-                <div class="nav-links">
+                <div class="nav-links desktop-nav">
                     <a href="#products">Products</a>
                     <a href="#about">About</a>
                     <a href="#privacy">Privacy</a>
@@ -761,7 +1090,7 @@
 
                 <button
                     id="themeToggle"
-                    class="icon-button"
+                    class="round-button"
                     type="button"
                     aria-label="Switch colour theme"
                     title="Switch colour theme"
@@ -769,10 +1098,27 @@
                     🌙
                 </button>
 
+                <button
+                    id="menuButton"
+                    class="round-button menu-button"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
             </div>
 
         </nav>
     </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#disclosure">Affiliate Disclosure</a>
+    </div>
 
     <main id="top">
 
@@ -793,9 +1139,15 @@
                     everyday life easier, more organised and more enjoyable.
                 </p>
 
-                <a class="hero-button" href="#products">
-                    Browse Products
-                </a>
+                <div class="hero-buttons">
+                    <a class="primary-button" href="#products">
+                        Browse Products
+                    </a>
+
+                    <a class="secondary-button" href="#about">
+                        About LiveEveryWhere
+                    </a>
+                </div>
 
             </div>
         </section>
@@ -804,20 +1156,33 @@
 
             <section
                 class="toolbar"
-                aria-label="Product search and filters"
+                aria-label="Product search, filters and sorting"
             >
 
-                <div class="search-wrap">
+                <div class="toolbar-top">
 
-                    <span class="search-icon">🔍</span>
+                    <div class="search-wrap">
+                        <span class="search-icon">🔍</span>
 
-                    <input
-                        id="productSearch"
-                        class="search-input"
-                        type="search"
-                        placeholder="Search products..."
-                        aria-label="Search products"
+                        <input
+                            id="productSearch"
+                            class="search-input"
+                            type="search"
+                            placeholder="Search products..."
+                            aria-label="Search products"
+                        >
+                    </div>
+
+                    <select
+                        id="sortSelect"
+                        class="sort-select"
+                        aria-label="Sort products"
                     >
+                        <option value="default">Sort: Featured</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                        <option value="category">Category</option>
+                    </select>
 
                 </div>
 
@@ -873,6 +1238,40 @@
 
                 </div>
 
+                <div class="results-summary">
+                    <span id="resultsCount">
+                        Showing 5 products
+                    </span>
+
+                    <button
+                        id="clearFilters"
+                        class="clear-button"
+                        type="button"
+                    >
+                        Clear search and filters
+                    </button>
+                </div>
+
+            </section>
+
+            <section
+                class="recent-section"
+                id="recentSection"
+                aria-labelledby="recentTitle"
+            >
+                <div class="recent-header">
+                    <h2 id="recentTitle">Recently viewed</h2>
+
+                    <button
+                        id="clearRecent"
+                        class="clear-button"
+                        type="button"
+                    >
+                        Clear
+                    </button>
+                </div>
+
+                <div class="recent-list" id="recentList"></div>
             </section>
 
             <section id="products">
@@ -891,20 +1290,35 @@
                     <!-- PRODUCT 1 -->
                     <article
                         class="product-card"
+                        data-id="fan"
                         data-category="travel tech"
-                        data-name="portable rechargeable fan"
+                        data-category-label="Travel & Tech"
+                        data-name="Portable Rechargeable Fan"
                         data-favourite="false"
+                        data-order="1"
                     >
 
                         <div class="product-image-wrap">
 
-                            <button
-                                class="favourite-button"
-                                type="button"
-                                aria-label="Add Portable Rechargeable Fan to favourites"
-                            >
-                                ♥
-                            </button>
+                            <div class="card-actions">
+                                <button
+                                    class="card-icon-button favourite-button"
+                                    type="button"
+                                    aria-label="Add Portable Rechargeable Fan to favourites"
+                                    title="Add to favourites"
+                                >
+                                    ♥
+                                </button>
+
+                                <button
+                                    class="card-icon-button share-icon-button"
+                                    type="button"
+                                    aria-label="Share Portable Rechargeable Fan"
+                                    title="Share product"
+                                >
+                                    ↗
+                                </button>
+                            </div>
 
                             <span class="product-badge orange">
                                 Popular Pick
@@ -929,11 +1343,11 @@
                                 Portable Rechargeable Fan
                             </h3>
 
-                            <div
-                                class="rating"
-                                aria-label="Five-star rating"
-                            >
+                            <div class="rating">
                                 ★★★★★
+                                <span class="rating-note">
+                                    Featured selection
+                                </span>
                             </div>
 
                             <p class="product-description">
@@ -941,15 +1355,24 @@
                                 rechargeable fan for home, office and travel.
                             </p>
 
-                            <a
-                                class="amazon-button"
-                                href="https://amzn.to/4gSEkDY"
-                                target="_blank"
-                                rel="noopener sponsored"
-                                data-product="Portable Rechargeable Fan"
-                            >
-                                View on Amazon
-                            </a>
+                            <div class="product-button-row">
+                                <a
+                                    class="amazon-button"
+                                    href="https://amzn.to/4gSEkDY"
+                                    target="_blank"
+                                    rel="noopener sponsored"
+                                    data-product="Portable Rechargeable Fan"
+                                >
+                                    View on Amazon
+                                </a>
+
+                                <button
+                                    class="share-text-button"
+                                    type="button"
+                                >
+                                    Share
+                                </button>
+                            </div>
 
                         </div>
 
@@ -958,20 +1381,35 @@
                     <!-- PRODUCT 2 -->
                     <article
                         class="product-card"
+                        data-id="vacuum-bags"
                         data-category="home travel"
-                        data-name="vacuum storage bags compression packing"
+                        data-category-label="Home & Travel"
+                        data-name="Vacuum Storage Bags"
                         data-favourite="false"
+                        data-order="2"
                     >
 
                         <div class="product-image-wrap">
 
-                            <button
-                                class="favourite-button"
-                                type="button"
-                                aria-label="Add Vacuum Storage Bags to favourites"
-                            >
-                                ♥
-                            </button>
+                            <div class="card-actions">
+                                <button
+                                    class="card-icon-button favourite-button"
+                                    type="button"
+                                    aria-label="Add Vacuum Storage Bags to favourites"
+                                    title="Add to favourites"
+                                >
+                                    ♥
+                                </button>
+
+                                <button
+                                    class="card-icon-button share-icon-button"
+                                    type="button"
+                                    aria-label="Share Vacuum Storage Bags"
+                                    title="Share product"
+                                >
+                                    ↗
+                                </button>
+                            </div>
 
                             <span class="product-badge">
                                 Space Saver
@@ -996,11 +1434,11 @@
                                 Vacuum Storage Bags
                             </h3>
 
-                            <div
-                                class="rating"
-                                aria-label="Five-star rating"
-                            >
+                            <div class="rating">
                                 ★★★★★
+                                <span class="rating-note">
+                                    Featured selection
+                                </span>
                             </div>
 
                             <p class="product-description">
@@ -1008,15 +1446,24 @@
                                 clothes, bedding and travel essentials.
                             </p>
 
-                            <a
-                                class="amazon-button"
-                                href="https://amzn.to/4vga2hX"
-                                target="_blank"
-                                rel="noopener sponsored"
-                                data-product="Vacuum Storage Bags"
-                            >
-                                View on Amazon
-                            </a>
+                            <div class="product-button-row">
+                                <a
+                                    class="amazon-button"
+                                    href="https://amzn.to/4vga2hX"
+                                    target="_blank"
+                                    rel="noopener sponsored"
+                                    data-product="Vacuum Storage Bags"
+                                >
+                                    View on Amazon
+                                </a>
+
+                                <button
+                                    class="share-text-button"
+                                    type="button"
+                                >
+                                    Share
+                                </button>
+                            </div>
 
                         </div>
 
@@ -1025,20 +1472,35 @@
                     <!-- PRODUCT 3 -->
                     <article
                         class="product-card"
+                        data-id="bluetooth-speaker"
                         data-category="tech home"
-                        data-name="bluetooth speaker phone stand led clock"
+                        data-category-label="Tech"
+                        data-name="3-in-1 Bluetooth Speaker, Phone Stand and LED Clock"
                         data-favourite="false"
+                        data-order="3"
                     >
 
                         <div class="product-image-wrap">
 
-                            <button
-                                class="favourite-button"
-                                type="button"
-                                aria-label="Add Bluetooth Speaker to favourites"
-                            >
-                                ♥
-                            </button>
+                            <div class="card-actions">
+                                <button
+                                    class="card-icon-button favourite-button"
+                                    type="button"
+                                    aria-label="Add Bluetooth Speaker to favourites"
+                                    title="Add to favourites"
+                                >
+                                    ♥
+                                </button>
+
+                                <button
+                                    class="card-icon-button share-icon-button"
+                                    type="button"
+                                    aria-label="Share Bluetooth Speaker"
+                                    title="Share product"
+                                >
+                                    ↗
+                                </button>
+                            </div>
 
                             <span class="product-badge orange">
                                 Multi-Use
@@ -1064,11 +1526,11 @@
                                 LED Clock
                             </h3>
 
-                            <div
-                                class="rating"
-                                aria-label="Five-star rating"
-                            >
+                            <div class="rating">
                                 ★★★★★
+                                <span class="rating-note">
+                                    Featured selection
+                                </span>
                             </div>
 
                             <p class="product-description">
@@ -1076,15 +1538,24 @@
                                 speaker, adjustable phone holder and digital clock.
                             </p>
 
-                            <a
-                                class="amazon-button"
-                                href="https://www.amazon.co.uk/dp/B0D8VV27NN?linkCode=sl1&amp;tag=123008f4-21&amp;linkId=ba51dc2b8f8e32ff0e1fd854c6536b0a"
-                                target="_blank"
-                                rel="noopener sponsored"
-                                data-product="Bluetooth Speaker Phone Stand and LED Clock"
-                            >
-                                View on Amazon
-                            </a>
+                            <div class="product-button-row">
+                                <a
+                                    class="amazon-button"
+                                    href="https://www.amazon.co.uk/dp/B0D8VV27NN?linkCode=sl1&amp;tag=123008f4-21&amp;linkId=ba51dc2b8f8e32ff0e1fd854c6536b0a"
+                                    target="_blank"
+                                    rel="noopener sponsored"
+                                    data-product="Bluetooth Speaker Phone Stand and LED Clock"
+                                >
+                                    View on Amazon
+                                </a>
+
+                                <button
+                                    class="share-text-button"
+                                    type="button"
+                                >
+                                    Share
+                                </button>
+                            </div>
 
                         </div>
 
@@ -1093,20 +1564,35 @@
                     <!-- PRODUCT 4 -->
                     <article
                         class="product-card"
+                        data-id="hob-protectors"
                         data-category="kitchen home"
-                        data-name="reusable gas hob protectors cooker protectors"
+                        data-category-label="Kitchen"
+                        data-name="Reusable Gas Hob Protectors"
                         data-favourite="false"
+                        data-order="4"
                     >
 
                         <div class="product-image-wrap">
 
-                            <button
-                                class="favourite-button"
-                                type="button"
-                                aria-label="Add Gas Hob Protectors to favourites"
-                            >
-                                ♥
-                            </button>
+                            <div class="card-actions">
+                                <button
+                                    class="card-icon-button favourite-button"
+                                    type="button"
+                                    aria-label="Add Gas Hob Protectors to favourites"
+                                    title="Add to favourites"
+                                >
+                                    ♥
+                                </button>
+
+                                <button
+                                    class="card-icon-button share-icon-button"
+                                    type="button"
+                                    aria-label="Share Gas Hob Protectors"
+                                    title="Share product"
+                                >
+                                    ↗
+                                </button>
+                            </div>
 
                             <span class="product-badge">
                                 Kitchen Pick
@@ -1131,11 +1617,11 @@
                                 Reusable Gas Hob Protectors
                             </h3>
 
-                            <div
-                                class="rating"
-                                aria-label="Five-star rating"
-                            >
+                            <div class="rating">
                                 ★★★★★
+                                <span class="rating-note">
+                                    Featured selection
+                                </span>
                             </div>
 
                             <p class="product-description">
@@ -1143,15 +1629,24 @@
                                 spills with reusable non-stick hob covers.
                             </p>
 
-                            <a
-                                class="amazon-button"
-                                href="https://www.amazon.co.uk/dp/B09CDG6HQN?linkCode=ml1&amp;tag=123008f4-21&amp;linkId=0ed797e7c34ad197cdfa9fdbe0e3abd9"
-                                target="_blank"
-                                rel="noopener sponsored"
-                                data-product="Reusable Gas Hob Protectors"
-                            >
-                                View on Amazon
-                            </a>
+                            <div class="product-button-row">
+                                <a
+                                    class="amazon-button"
+                                    href="https://www.amazon.co.uk/dp/B09CDG6HQN?linkCode=ml1&amp;tag=123008f4-21&amp;linkId=0ed797e7c34ad197cdfa9fdbe0e3abd9"
+                                    target="_blank"
+                                    rel="noopener sponsored"
+                                    data-product="Reusable Gas Hob Protectors"
+                                >
+                                    View on Amazon
+                                </a>
+
+                                <button
+                                    class="share-text-button"
+                                    type="button"
+                                >
+                                    Share
+                                </button>
+                            </div>
 
                         </div>
 
@@ -1160,20 +1655,35 @@
                     <!-- PRODUCT 5 -->
                     <article
                         class="product-card"
+                        data-id="featured-gadget"
                         data-category="home"
-                        data-name="featured home gadget lifestyle product"
+                        data-category-label="Home"
+                        data-name="Featured Home Gadget"
                         data-favourite="false"
+                        data-order="5"
                     >
 
                         <div class="product-image-wrap">
 
-                            <button
-                                class="favourite-button"
-                                type="button"
-                                aria-label="Add Featured Home Gadget to favourites"
-                            >
-                                ♥
-                            </button>
+                            <div class="card-actions">
+                                <button
+                                    class="card-icon-button favourite-button"
+                                    type="button"
+                                    aria-label="Add Featured Home Gadget to favourites"
+                                    title="Add to favourites"
+                                >
+                                    ♥
+                                </button>
+
+                                <button
+                                    class="card-icon-button share-icon-button"
+                                    type="button"
+                                    aria-label="Share Featured Home Gadget"
+                                    title="Share product"
+                                >
+                                    ↗
+                                </button>
+                            </div>
 
                             <span class="product-badge orange">
                                 Featured Pick
@@ -1198,11 +1708,11 @@
                                 Featured Home Gadget
                             </h3>
 
-                            <div
-                                class="rating"
-                                aria-label="Five-star rating"
-                            >
+                            <div class="rating">
                                 ★★★★★
+                                <span class="rating-note">
+                                    Featured selection
+                                </span>
                             </div>
 
                             <p class="product-description">
@@ -1210,15 +1720,24 @@
                                 convenient home and lifestyle use.
                             </p>
 
-                            <a
-                                class="amazon-button"
-                                href="https://www.amazon.co.uk/dp/B0CRH8XXMW?linkCode=ml1&amp;tag=123008f4-21&amp;linkId=2029e6300b73d7d3521d6bceffe6a5ef"
-                                target="_blank"
-                                rel="noopener sponsored"
-                                data-product="Featured Home Gadget"
-                            >
-                                View on Amazon
-                            </a>
+                            <div class="product-button-row">
+                                <a
+                                    class="amazon-button"
+                                    href="https://www.amazon.co.uk/dp/B0CRH8XXMW?linkCode=ml1&amp;tag=123008f4-21&amp;linkId=2029e6300b73d7d3521d6bceffe6a5ef"
+                                    target="_blank"
+                                    rel="noopener sponsored"
+                                    data-product="Featured Home Gadget"
+                                >
+                                    View on Amazon
+                                </a>
+
+                                <button
+                                    class="share-text-button"
+                                    type="button"
+                                >
+                                    Share
+                                </button>
+                            </div>
 
                         </div>
 
@@ -1227,7 +1746,7 @@
                     <div class="no-results" id="noResults">
                         <strong>No matching products found.</strong>
                         <br>
-                        Try another search or category.
+                        Try another search, filter or sorting option.
                     </div>
 
                 </div>
@@ -1269,7 +1788,7 @@
                         LiveEveryWhere uses Google Analytics only after
                         a visitor accepts analytics cookies. Analytics
                         may collect general information such as page
-                        visits, device type and outbound-link interactions.
+                        visits, device type and product-link interactions.
                     </p>
 
                     <p>
@@ -1332,9 +1851,9 @@
         <h3>Analytics cookies</h3>
 
         <p>
-            We use Google Analytics to understand website visits
-            and product-link interactions. Analytics will only be
-            enabled after you select Accept.
+            We use Google Analytics to understand website visits,
+            searches and product-link interactions. Analytics will
+            only be enabled after you select Accept.
         </p>
 
         <div class="cookie-actions">
@@ -1359,37 +1878,265 @@
 
     </div>
 
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <button
+        class="back-to-top"
+        id="backToTop"
+        type="button"
+        aria-label="Back to top"
+        title="Back to top"
+    >
+        ↑
+    </button>
+
     <script>
         const searchInput =
             document.getElementById("productSearch");
 
+        const sortSelect =
+            document.getElementById("sortSelect");
+
         const categoryButtons =
             document.querySelectorAll(".category-button");
 
+        const productGrid =
+            document.getElementById("productGrid");
+
         const productCards =
-            document.querySelectorAll(".product-card");
+            Array.from(
+                document.querySelectorAll(".product-card")
+            );
 
         const noResults =
             document.getElementById("noResults");
 
+        const resultsCount =
+            document.getElementById("resultsCount");
+
+        const clearFiltersButton =
+            document.getElementById("clearFilters");
+
         const themeToggle =
             document.getElementById("themeToggle");
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
 
         const cookieNotice =
             document.getElementById("cookieNotice");
 
+        const toast =
+            document.getElementById("toast");
+
+        const backToTop =
+            document.getElementById("backToTop");
+
+        const recentSection =
+            document.getElementById("recentSection");
+
+        const recentList =
+            document.getElementById("recentList");
+
+        const clearRecentButton =
+            document.getElementById("clearRecent");
+
         let selectedCategory = "all";
+        let searchTimer;
+
+        function analyticsAllowed() {
+            return (
+                localStorage.getItem(
+                    "liveeverywhere-analytics-consent"
+                ) === "accepted"
+            );
+        }
+
+        function sendAnalyticsEvent(eventName, parameters = {}) {
+            if (
+                analyticsAllowed() &&
+                typeof gtag === "function"
+            ) {
+                gtag("event", eventName, parameters);
+            }
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("visible");
+
+            window.clearTimeout(showToast.timeout);
+
+            showToast.timeout =
+                window.setTimeout(() => {
+                    toast.classList.remove("visible");
+                }, 2600);
+        }
+
+        function safeJsonRead(key, fallback = []) {
+            try {
+                return (
+                    JSON.parse(localStorage.getItem(key)) ||
+                    fallback
+                );
+            } catch (error) {
+                return fallback;
+            }
+        }
 
         function getSavedFavourites() {
-            try {
-                return JSON.parse(
-                    localStorage.getItem(
-                        "liveeverywhere-favourites"
-                    )
-                ) || [];
-            } catch (error) {
-                return [];
+            return safeJsonRead(
+                "liveeverywhere-favourites",
+                []
+            );
+        }
+
+        function getRecentlyViewed() {
+            return safeJsonRead(
+                "liveeverywhere-recently-viewed",
+                []
+            );
+        }
+
+        function saveRecentlyViewed(card) {
+            const item = {
+                id: card.dataset.id,
+                name: card.dataset.name
+            };
+
+            let recentItems = getRecentlyViewed();
+
+            recentItems =
+                recentItems.filter(
+                    (recentItem) =>
+                        recentItem.id !== item.id
+                );
+
+            recentItems.unshift(item);
+
+            recentItems = recentItems.slice(0, 5);
+
+            localStorage.setItem(
+                "liveeverywhere-recently-viewed",
+                JSON.stringify(recentItems)
+            );
+
+            renderRecentlyViewed();
+        }
+
+        function renderRecentlyViewed() {
+            const recentItems = getRecentlyViewed();
+
+            recentList.innerHTML = "";
+
+            if (recentItems.length === 0) {
+                recentSection.classList.remove("visible");
+                return;
             }
+
+            recentSection.classList.add("visible");
+
+            recentItems.forEach((item) => {
+                const button =
+                    document.createElement("button");
+
+                button.type = "button";
+                button.className = "recent-item";
+                button.textContent = item.name;
+
+                button.addEventListener("click", () => {
+                    const card =
+                        document.querySelector(
+                            `[data-id="${item.id}"]`
+                        );
+
+                    if (card) {
+                        selectedCategory = "all";
+                        searchInput.value = "";
+
+                        categoryButtons.forEach(
+                            (categoryButton) => {
+                                categoryButton.classList.remove(
+                                    "active"
+                                );
+                            }
+                        );
+
+                        const allButton =
+                            document.querySelector(
+                                '[data-category="all"]'
+                            );
+
+                        allButton.classList.add("active");
+
+                        filterProducts();
+
+                        card.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+
+                        sendAnalyticsEvent(
+                            "recent_product_selected",
+                            {
+                                product_name: item.name
+                            }
+                        );
+                    }
+                });
+
+                recentList.appendChild(button);
+            });
+        }
+
+        function sortProducts() {
+            const selectedSort = sortSelect.value;
+
+            const sortedCards = [...productCards];
+
+            if (selectedSort === "name-asc") {
+                sortedCards.sort((a, b) =>
+                    a.dataset.name.localeCompare(
+                        b.dataset.name
+                    )
+                );
+            }
+
+            if (selectedSort === "name-desc") {
+                sortedCards.sort((a, b) =>
+                    b.dataset.name.localeCompare(
+                        a.dataset.name
+                    )
+                );
+            }
+
+            if (selectedSort === "category") {
+                sortedCards.sort((a, b) =>
+                    a.dataset.categoryLabel.localeCompare(
+                        b.dataset.categoryLabel
+                    )
+                );
+            }
+
+            if (selectedSort === "default") {
+                sortedCards.sort(
+                    (a, b) =>
+                        Number(a.dataset.order) -
+                        Number(b.dataset.order)
+                );
+            }
+
+            sortedCards.forEach((card) => {
+                productGrid.insertBefore(card, noResults);
+            });
         }
 
         function filterProducts() {
@@ -1413,7 +2160,9 @@
 
                 const matchesCategory =
                     selectedCategory === "all" ||
-                    categories.includes(selectedCategory) ||
+                    categories.includes(
+                        selectedCategory
+                    ) ||
                     (
                         selectedCategory === "favourites" &&
                         isFavourite
@@ -1434,12 +2183,48 @@
                 visibleProducts === 0
                     ? "block"
                     : "none";
+
+            resultsCount.textContent =
+                visibleProducts === 1
+                    ? "Showing 1 product"
+                    : `Showing ${visibleProducts} products`;
         }
 
-        searchInput.addEventListener(
-            "input",
-            filterProducts
-        );
+        function applyProducts() {
+            sortProducts();
+            filterProducts();
+        }
+
+        searchInput.addEventListener("input", () => {
+            applyProducts();
+
+            window.clearTimeout(searchTimer);
+
+            searchTimer = window.setTimeout(() => {
+                const searchTerm =
+                    searchInput.value.trim();
+
+                if (searchTerm.length > 0) {
+                    sendAnalyticsEvent(
+                        "product_search",
+                        {
+                            search_term: searchTerm
+                        }
+                    );
+                }
+            }, 700);
+        });
+
+        sortSelect.addEventListener("change", () => {
+            applyProducts();
+
+            sendAnalyticsEvent(
+                "product_sort",
+                {
+                    sort_option: sortSelect.value
+                }
+            );
+        });
 
         categoryButtons.forEach((button) => {
             button.addEventListener("click", () => {
@@ -1452,9 +2237,42 @@
                 selectedCategory =
                     button.dataset.category;
 
-                filterProducts();
+                applyProducts();
+
+                sendAnalyticsEvent(
+                    "category_selected",
+                    {
+                        category_name:
+                            selectedCategory
+                    }
+                );
             });
         });
+
+        clearFiltersButton.addEventListener(
+            "click",
+            () => {
+                searchInput.value = "";
+                selectedCategory = "all";
+                sortSelect.value = "default";
+
+                categoryButtons.forEach((button) => {
+                    button.classList.remove("active");
+                });
+
+                document
+                    .querySelector(
+                        '[data-category="all"]'
+                    )
+                    .classList.add("active");
+
+                applyProducts();
+
+                sendAnalyticsEvent(
+                    "product_filters_cleared"
+                );
+            }
+        );
 
         const savedFavourites =
             getSavedFavourites();
@@ -1465,14 +2283,16 @@
                 const card =
                     button.closest(".product-card");
 
-                const productName =
-                    card.dataset.name;
+                const productId =
+                    card.dataset.id;
 
                 if (
-                    savedFavourites.includes(productName)
+                    savedFavourites.includes(productId)
                 ) {
                     button.classList.add("active");
                     card.dataset.favourite = "true";
+                    button.title =
+                        "Remove from favourites";
                 }
 
                 button.addEventListener(
@@ -1488,21 +2308,26 @@
                         card.dataset.favourite =
                             String(isFavourite);
 
+                        button.title =
+                            isFavourite
+                                ? "Remove from favourites"
+                                : "Add to favourites";
+
                         let favourites =
                             getSavedFavourites();
 
                         if (
                             isFavourite &&
-                            !favourites.includes(productName)
+                            !favourites.includes(productId)
                         ) {
-                            favourites.push(productName);
+                            favourites.push(productId);
                         }
 
                         if (!isFavourite) {
                             favourites =
                                 favourites.filter(
                                     (item) =>
-                                        item !== productName
+                                        item !== productId
                                 );
                         }
 
@@ -1511,26 +2336,124 @@
                             JSON.stringify(favourites)
                         );
 
-                        filterProducts();
+                        showToast(
+                            isFavourite
+                                ? "Added to favourites"
+                                : "Removed from favourites"
+                        );
+
+                        sendAnalyticsEvent(
+                            "favourite_changed",
+                            {
+                                product_name:
+                                    card.dataset.name,
+                                favourite_status:
+                                    isFavourite
+                                        ? "added"
+                                        : "removed"
+                            }
+                        );
+
+                        applyProducts();
                     }
                 );
+            });
+
+        async function shareProduct(card) {
+            const productName =
+                card.dataset.name;
+
+            const amazonButton =
+                card.querySelector(".amazon-button");
+
+            const shareData = {
+                title: `${productName} | LiveEveryWhere`,
+                text:
+                    `Take a look at ${productName} on LiveEveryWhere.`,
+                url: amazonButton.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+
+                    showToast("Sharing options opened");
+                } else {
+                    await navigator.clipboard.writeText(
+                        amazonButton.href
+                    );
+
+                    showToast(
+                        "Product link copied to clipboard"
+                    );
+                }
+
+                sendAnalyticsEvent(
+                    "product_shared",
+                    {
+                        product_name: productName
+                    }
+                );
+            } catch (error) {
+                if (error.name !== "AbortError") {
+                    showToast(
+                        "Unable to share this product"
+                    );
+                }
+            }
+        }
+
+        document
+            .querySelectorAll(
+                ".share-icon-button, .share-text-button"
+            )
+            .forEach((button) => {
+                button.addEventListener("click", () => {
+                    const card =
+                        button.closest(".product-card");
+
+                    saveRecentlyViewed(card);
+                    shareProduct(card);
+                });
             });
 
         document
             .querySelectorAll(".amazon-button")
             .forEach((button) => {
                 button.addEventListener("click", () => {
-                    const productName =
-                        button.dataset.product;
+                    const card =
+                        button.closest(".product-card");
 
-                    if (typeof gtag === "function") {
-                        gtag("event", "amazon_click", {
-                            product_name: productName,
-                            link_location: "product_card"
-                        });
-                    }
+                    saveRecentlyViewed(card);
+
+                    sendAnalyticsEvent(
+                        "amazon_click",
+                        {
+                            product_name:
+                                button.dataset.product,
+                            product_category:
+                                card.dataset.categoryLabel,
+                            link_location:
+                                "product_card"
+                        }
+                    );
                 });
             });
+
+        clearRecentButton.addEventListener(
+            "click",
+            () => {
+                localStorage.removeItem(
+                    "liveeverywhere-recently-viewed"
+                );
+
+                renderRecentlyViewed();
+
+                sendAnalyticsEvent(
+                    "recent_products_cleared"
+                );
+            }
+        );
 
         const savedTheme =
             localStorage.getItem(
@@ -1566,8 +2489,82 @@
                         ? "dark"
                         : "light"
                 );
+
+                sendAnalyticsEvent(
+                    "theme_changed",
+                    {
+                        theme:
+                            darkModeEnabled
+                                ? "dark"
+                                : "light"
+                    }
+                );
             }
         );
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove("open");
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+            menuButton.textContent = "☰";
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+
+        menuButton.addEventListener("click", () => {
+            const menuIsOpen =
+                mobileMenu.classList.toggle("open");
+
+            document.body.classList.toggle(
+                "menu-open",
+                menuIsOpen
+            );
+
+            menuButton.textContent =
+                menuIsOpen ? "✕" : "☰";
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(menuIsOpen)
+            );
+        });
+
+        mobileMenu
+            .querySelectorAll("a")
+            .forEach((link) => {
+                link.addEventListener(
+                    "click",
+                    closeMobileMenu
+                );
+            });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 800) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener("scroll", () => {
+            backToTop.classList.toggle(
+                "visible",
+                window.scrollY > 650
+            );
+        });
+
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            sendAnalyticsEvent(
+                "back_to_top_clicked"
+            );
+        });
 
         const analyticsConsent =
             localStorage.getItem(
@@ -1598,6 +2595,10 @@
                 });
 
                 cookieNotice.style.display = "none";
+
+                showToast(
+                    "Analytics cookies accepted"
+                );
             });
 
         document
@@ -1613,14 +2614,31 @@
                 });
 
                 cookieNotice.style.display = "none";
+
+                showToast(
+                    "Analytics cookies declined"
+                );
             });
+
+        const urlParameters =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const initialSearch =
+            urlParameters.get("search");
+
+        if (initialSearch) {
+            searchInput.value = initialSearch;
+        }
 
         document.getElementById(
             "currentYear"
         ).textContent =
             new Date().getFullYear();
 
-        filterProducts();
+        renderRecentlyViewed();
+        applyProducts();
     </script>
 
 </body>
