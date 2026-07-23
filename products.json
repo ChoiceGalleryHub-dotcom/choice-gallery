@@ -1,0 +1,67 @@
+[
+  {
+    "id": "fan",
+    "name": "Portable Rechargeable Fan",
+    "categories": ["travel", "tech"],
+    "categoryLabel": "Travel & Tech",
+    "description": "Stay cool wherever you go with a compact rechargeable fan for home, office and travel.",
+    "image": "images/fan.png",
+    "affiliateUrl": "https://amzn.to/4gSEkDY",
+    "badge": "Popular Pick",
+    "badgeStyle": "orange",
+    "order": 1,
+    "featured": true
+  },
+  {
+    "id": "vacuum-bags",
+    "name": "Vacuum Storage Bags",
+    "categories": ["home", "travel"],
+    "categoryLabel": "Home & Travel",
+    "description": "Save valuable storage space while organising clothes, bedding and travel essentials.",
+    "image": "images/Vacuum bag.png",
+    "affiliateUrl": "https://amzn.to/4vga2hX",
+    "badge": "Space Saver",
+    "badgeStyle": "default",
+    "order": 2,
+    "featured": true
+  },
+  {
+    "id": "bluetooth-speaker",
+    "name": "3-in-1 Bluetooth Speaker, Phone Stand and LED Clock",
+    "categories": ["tech", "home"],
+    "categoryLabel": "Tech",
+    "description": "A useful desk accessory combining a Bluetooth speaker, adjustable phone holder and digital clock.",
+    "image": "images/bluetooth-speaker.jpeg",
+    "affiliateUrl": "https://www.amazon.co.uk/dp/B0D8VV27NN?linkCode=sl1&tag=123008f4-21&linkId=ba51dc2b8f8e32ff0e1fd854c6536b0a",
+    "badge": "Multi-Use",
+    "badgeStyle": "orange",
+    "order": 3,
+    "featured": true
+  },
+  {
+    "id": "hob-protectors",
+    "name": "Reusable Gas Hob Protectors",
+    "categories": ["kitchen", "home"],
+    "categoryLabel": "Kitchen",
+    "description": "Help protect your cooker from food, grease and spills with reusable non-stick hob covers.",
+    "image": "images/hob-protectors.png",
+    "affiliateUrl": "https://www.amazon.co.uk/dp/B09CDG6HQN?linkCode=ml1&tag=123008f4-21&linkId=0ed797e7c34ad197cdfa9fdbe0e3abd9",
+    "badge": "Kitchen Pick",
+    "badgeStyle": "default",
+    "order": 4,
+    "featured": true
+  },
+  {
+    "id": "featured-gadget",
+    "name": "Featured Home Gadget",
+    "categories": ["home"],
+    "categoryLabel": "Home",
+    "description": "A practical everyday product selected for convenient home and lifestyle use.",
+    "image": "images/featured-gadget.png",
+    "affiliateUrl": "https://www.amazon.co.uk/dp/B0CRH8XXMW?linkCode=ml1&tag=123008f4-21&linkId=2029e6300b73d7d3521d6bceffe6a5ef",
+    "badge": "Featured Pick",
+    "badgeStyle": "orange",
+    "order": 5,
+    "featured": true
+  }
+]
