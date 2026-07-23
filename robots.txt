@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://choicegalleryhub-dotcom.github.io/choice-gallery/sitemap.xml
