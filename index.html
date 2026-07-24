@@ -288,7 +288,7 @@ function filter() {
     if (show) visible += 1;
   });
   noResults.style.display = visible ? "none" : "block";
-  results.textContent = `Showing ${visible} product${visible === 1 ? "" : "s"}`;
+  results.textContent = `✨ ${visible} Handpicked Find${visible === 1 ? "" : "s"}`;
 }
 
 function apply() { sortCards(); filter(); }
