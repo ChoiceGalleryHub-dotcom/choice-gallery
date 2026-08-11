@@ -71,7 +71,7 @@ function createProductCard(product) {
   <div class="content">
     <div class="product-category">${escapeHtml(product.categoryLabel)}</div>
     <h3 class="title">${escapeHtml(product.name)}</h3>
-    <div class="rating">★★★★★ <span>Featured selection</span></div>
+    <div class="rating"><span>✓ Handpicked Find</span></div>
     <p class="description">${escapeHtml(product.description)}</p>
     <div class="button-row">
       <a class="amazon" href="${escapeHtml(product.affiliateUrl)}" target="_blank" rel="noopener sponsored" data-product="${escapeHtml(product.name)}">View on Amazon</a>
