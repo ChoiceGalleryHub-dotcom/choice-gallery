@@ -477,7 +477,7 @@ body.dark .icon {
 }
 
 .description {
-  min-height: 82px;
+  min-height: 64px;
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
