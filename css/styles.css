@@ -470,16 +470,10 @@ body.dark .icon {
 }
 
 .rating {
-  margin: 13px 0 12px;
-  color: var(--star);
-  letter-spacing: 2px;
-  font-size: .98rem;
-}
-
-.rating span {
-  color: var(--muted);
-  letter-spacing: 0;
-  font-size: .8rem;
+    margin: 8px 0 12px;
+    color: var(--muted);
+    font-size: .88rem;
+    letter-spacing: 0;
 }
 
 .description {
