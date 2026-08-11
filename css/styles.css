@@ -466,7 +466,7 @@ body.dark .icon {
 }
 
 .title {
-  min-height: 58px;
+  min-height: 35px;
   margin: 9px 0 0;
   color: var(--heading);
   font-size: 1.3rem;
