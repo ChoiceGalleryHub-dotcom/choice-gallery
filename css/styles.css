@@ -811,6 +811,9 @@ body.dark .icon {
 .back.visible {
   display: flex;
 }
+body:has(.modal.open) .back {
+    display: none;
+}
 
 footer {
   padding: 45px 20px 25px;
@@ -942,4 +945,17 @@ footer {
     bottom: 8px;
     left: 8px;
   }
+  .  comparison-content {
+    padding: 12px;
+}
+
+.comparison-table {
+    min-width: 620px;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 10px;
+    font-size: .9rem;
+}
 }
