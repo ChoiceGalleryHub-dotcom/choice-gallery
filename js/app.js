@@ -173,8 +173,13 @@ function apply() {
 
   const trendingPanel = document.querySelector(".panel.trending");
   if (trendingPanel) {
-    trendingPanel.style.display = search.value.trim() ? "none" : "";
-  }
+  const hasSearch = search.value.trim() !== "";
+  const hideForCategory =
+    selected !== "all" && selected !== "home";
+
+  trendingPanel.style.display =
+    hasSearch || hideForCategory ? "none" : "";
+}
 }
 function compareIds() { return read("liveeverywhere-compare", []); }
 
