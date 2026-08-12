@@ -167,7 +167,15 @@ function filter() {
   results.textContent = `✨ ${visible} Handpicked Find${visible === 1 ? "" : "s"}`;
 }
 
-function apply() { sortCards(); filter(); }
+function apply() {
+  sortCards();
+  filter();
+
+  const trendingPanel = document.querySelector(".panel.trending");
+  if (trendingPanel) {
+    trendingPanel.style.display = search.value.trim() ? "none" : "";
+  }
+}
 function compareIds() { return read("liveeverywhere-compare", []); }
 
 function renderCompare() {
