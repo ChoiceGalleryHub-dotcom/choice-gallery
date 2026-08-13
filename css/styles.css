@@ -959,3 +959,31 @@ footer {
     font-size: .9rem;
 }
 }
+@media (max-width: 360px) {
+  .hero {
+    padding: 42px 14px 45px;
+  }
+
+  .hero-badge {
+    font-size: 0.88rem;
+    padding: 8px 12px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  .hero p {
+    margin: 16px auto 22px;
+    font-size: 0.95rem;
+  }
+
+  .hero-buttons {
+    gap: 10px;
+  }
+
+  .hero-buttons a {
+    padding: 12px 18px;
+  }
+}

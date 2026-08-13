@@ -351,7 +351,12 @@ window.onscroll = () => back.classList.toggle("visible", window.scrollY > 650);
 back.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
 const consent = localStorage.getItem("liveeverywhere-analytics-consent");
-if (consent === "accepted" || consent === "declined") cookie.style.display = "none";
+
+if (consent === "accepted" || consent === "declined") {
+    cookie.style.display = "none";
+} else {
+    cookie.style.display = "block";
+}
 document.getElementById("acceptAnalytics").onclick = () => {
   localStorage.setItem("liveeverywhere-analytics-consent", "accepted");
   gtag("consent", "update", { analytics_storage: "granted" });
