@@ -300,6 +300,26 @@ buttons.forEach(button => {
     track("category_selected", { category_name: selected });
   };
 });
+const interestButtons = document.querySelectorAll(".interest-chip");
+
+interestButtons.forEach(button => {
+  button.onclick = () => {
+    interestButtons.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+
+    search.value = button.dataset.interest;
+    selected = "all";
+
+    buttons.forEach(item => item.classList.remove("active"));
+    document.querySelector('[data-category="all"]').classList.add("active");
+
+    apply();
+
+    track("interest_selected", {
+      interest_name: button.dataset.interest
+    });
+  };
+});
 
 document.getElementById("clearFilters").onclick = () => {
   search.value = "";
@@ -307,6 +327,7 @@ document.getElementById("clearFilters").onclick = () => {
   selected = "all";
   buttons.forEach(button => button.classList.remove("active"));
   document.querySelector('[data-category="all"]').classList.add("active");
+  interestButtons.forEach(button => button.classList.remove("active"));
   apply();
 };
 
