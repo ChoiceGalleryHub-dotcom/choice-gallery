@@ -68,5 +68,19 @@
   "badgeStyle": "orange",
   "order": 5,
   "featured": true
+},
+{
+  "id": "gyro-ball",
+  "name": "Gyro Ball Wrist & Forearm Exerciser",
+  "categories": ["fitness", "health"],
+  "categoryLabel": "Fitness & Sports",
+  "tags": ["Fitness & Sports", "Health & Wellness", "Everyday Essentials"],
+  "description": "A compact gyro ball designed for wrist, hand and forearm exercise, grip training and everyday fitness.",
+  "image": "images/gyro-ball-main.png",
+  "affiliateUrl": "https://amzn.to/466L76n",
+  "badge": "Fitness Pick",
+  "badgeStyle": "orange",
+  "order": 6,
+  "featured": true
 }
 ]
