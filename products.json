@@ -10,7 +10,7 @@
     "affiliateUrl": "https://amzn.to/4gSEkDY",
     "badge": "Popular Pick",
     "badgeStyle": "orange",
-    "order": 1,
+    "order": 2,
     "featured": true
   },
   {
@@ -24,7 +24,7 @@
   "affiliateUrl": "https://amzn.to/4vga2hX",
   "badge": "Space Saver",
   "badgeStyle": "default",
-  "order": 2,
+  "order": 3,
   "featured": true
 },
 {
@@ -38,7 +38,7 @@
   "affiliateUrl": "https://www.amazon.co.uk/dp/B0D8VV27NN?linkCode=sl1&tag=123008f4-21&linkId=ba51dc2b8f8e32ff0e1fd854c6536b0a",
   "badge": "Multi-Use",
   "badgeStyle": "orange",
-  "order": 3,
+  "order": 4,
   "featured": true
 },
 {
@@ -52,7 +52,7 @@
   "affiliateUrl": "https://www.amazon.co.uk/dp/B09CDG6HQN?linkCode=ml1&tag=123008f4-21&linkId=0ed797e7c34ad197cdfa9fdbe0e3abd9",
   "badge": "Kitchen Pick",
   "badgeStyle": "default",
-  "order": 4,
+  "order": 5,
   "featured": true
 },
 {
@@ -66,12 +66,13 @@
   "affiliateUrl": "https://www.amazon.co.uk/dp/B0CRH8XXMW?linkCode=ml1&tag=123008f4-21&linkId=2029e6300b73d7d3521d6bceffe6a5ef",
   "badge": "Featured Pick",
   "badgeStyle": "orange",
-  "order": 5,
+  "order": 6,
   "featured": true
 },
 {
   "id": "gyro-ball",
   "name": "Gyro Ball Wrist & Forearm Exerciser",
+  "publishedAt": "2026-08-18",
   "categories": ["fitness", "health"],
   "categoryLabel": "Fitness & Sports",
   "tags": ["Fitness & Sports", "Health & Wellness", "Everyday Essentials"],
@@ -80,7 +81,7 @@
   "affiliateUrl": "https://amzn.to/466L76n",
   "badge": "Fitness Pick",
   "badgeStyle": "orange",
-  "order": 6,
+  "order": 1,
   "featured": true
 }
 ]
