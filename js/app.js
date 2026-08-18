@@ -59,7 +59,7 @@ function createProductCard(product) {
   const tags = Array.isArray(product.tags) ? product.tags.join(" ") : "";
   const badgeClass = product.badgeStyle === "orange" ? "badge orange" : "badge";
   return `
-<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
+<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}"data-published-at="${escapeHtml(product.publishedAt || "")}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
   <div class="image-wrap">
     <div class="card-actions">
       <button class="icon fav" type="button" title="Add to favourites">♥</button>
@@ -149,7 +149,16 @@ function sortCards() {
   if (option === "name-desc") sortedCards.sort((a, b) => b.dataset.name.localeCompare(a.dataset.name));
   if (option === "category") sortedCards.sort((a, b) => a.dataset.categoryLabel.localeCompare(b.dataset.categoryLabel));
   if (option === "popular") sortedCards.sort((a, b) => (clickCounts[b.dataset.id] || 0) - (clickCounts[a.dataset.id] || 0));
-  if (option === "default") sortedCards.sort((a, b) => Number(a.dataset.order) - Number(b.dataset.order));
+  if (option === "default") {
+  sortedCards.sort((a, b) => {
+    const dateA = a.dataset.publishedAt ? new Date(a.dataset.publishedAt).getTime() : 0;
+    const dateB = b.dataset.publishedAt ? new Date(b.dataset.publishedAt).getTime() : 0;
+
+    if (dateA !== dateB) return dateB - dateA;
+
+    return Number(a.dataset.order) - Number(b.dataset.order);
+  });
+}
   sortedCards.forEach(card => grid.insertBefore(card, noResults));
 }
 
