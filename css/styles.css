@@ -945,7 +945,7 @@ footer {
     bottom: 8px;
     left: 8px;
   }
-  .  comparison-content {
+  .comparison-content {
     padding: 12px;
 }
 
@@ -985,5 +985,66 @@ footer {
 
   .hero-buttons a {
     padding: 12px 18px;
+  }
+}
+.interest-filter {
+  margin-top: 18px;
+}
+
+.interest-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.interest-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.interest-chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--heading);
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.interest-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--orange);
+}
+
+.interest-chip.active {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+body.dark .interest-chip.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .interest-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: thin;
+  }
+
+  .interest-chip {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 }

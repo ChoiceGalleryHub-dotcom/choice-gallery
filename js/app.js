@@ -56,9 +56,10 @@ function escapeHtml(value) {
 
 function createProductCard(product) {
   const categories = Array.isArray(product.categories) ? product.categories.join(" ") : "";
+  const tags = Array.isArray(product.tags) ? product.tags.join(" ") : "";
   const badgeClass = product.badgeStyle === "orange" ? "badge orange" : "badge";
   return `
-<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
+<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
   <div class="image-wrap">
     <div class="card-actions">
       <button class="icon fav" type="button" title="Add to favourites">♥</button>
@@ -156,7 +157,7 @@ function filter() {
   const term = search.value.toLowerCase().trim();
   let visible = 0;
   cards.forEach(card => {
-    const searchable = `${card.dataset.name} ${card.dataset.description} ${card.dataset.categoryLabel}`.toLowerCase();
+    const searchable = `${card.dataset.name} ${card.dataset.description} ${card.dataset.categoryLabel} ${card.dataset.tags || ""}`.toLowerCase();
     const matchesSearch = searchable.includes(term);
     const matchesCategory = selected === "all" || card.dataset.category.split(" ").includes(selected) || (selected === "favourites" && card.dataset.favourite === "true");
     const show = matchesSearch && matchesCategory;
@@ -299,6 +300,26 @@ buttons.forEach(button => {
     track("category_selected", { category_name: selected });
   };
 });
+const interestButtons = document.querySelectorAll(".interest-chip");
+
+interestButtons.forEach(button => {
+  button.onclick = () => {
+    interestButtons.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+
+    search.value = button.dataset.interest;
+    selected = "all";
+
+    buttons.forEach(item => item.classList.remove("active"));
+    document.querySelector('[data-category="all"]').classList.add("active");
+
+    apply();
+
+    track("interest_selected", {
+      interest_name: button.dataset.interest
+    });
+  };
+});
 
 document.getElementById("clearFilters").onclick = () => {
   search.value = "";
@@ -306,6 +327,7 @@ document.getElementById("clearFilters").onclick = () => {
   selected = "all";
   buttons.forEach(button => button.classList.remove("active"));
   document.querySelector('[data-category="all"]').classList.add("active");
+  interestButtons.forEach(button => button.classList.remove("active"));
   apply();
 };
 
