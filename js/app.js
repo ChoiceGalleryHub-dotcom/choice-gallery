@@ -18,7 +18,7 @@ const back = document.getElementById("backToTop");
 const cookie = document.getElementById("cookieNotice");
 
 let cards = [];
-let selected = "all";
+let selected = "home";
 let searchTimer;
 
 function read(key, fallback) {
@@ -59,7 +59,8 @@ function createProductCard(product) {
   const tags = Array.isArray(product.tags) ? product.tags.join(" ") : "";
   const badgeClass = product.badgeStyle === "orange" ? "badge orange" : "badge";
   return `
-<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}"data-published-at="${escapeHtml(product.publishedAt || "")}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
+<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}"data-published-at="${escapeHtml(product.publishedAt || "")}"data-homepage="${product.homepage === true ? "true" : "false"}"
+data-homepage-order="${Number(product.homepageOrder) || 999}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
   <div class="image-wrap">
     <div class="card-actions">
       <button class="icon fav" type="button" title="Add to favourites">♥</button>
@@ -151,8 +152,17 @@ function sortCards() {
   if (option === "popular") sortedCards.sort((a, b) => (clickCounts[b.dataset.id] || 0) - (clickCounts[a.dataset.id] || 0));
   if (option === "default") {
   sortedCards.sort((a, b) => {
-    const dateA = a.dataset.publishedAt ? new Date(a.dataset.publishedAt).getTime() : 0;
-    const dateB = b.dataset.publishedAt ? new Date(b.dataset.publishedAt).getTime() : 0;
+    if (selected === "home") {
+      return Number(a.dataset.homepageOrder) - Number(b.dataset.homepageOrder);
+    }
+
+    const dateA = a.dataset.publishedAt
+      ? new Date(a.dataset.publishedAt).getTime()
+      : 0;
+
+    const dateB = b.dataset.publishedAt
+      ? new Date(b.dataset.publishedAt).getTime()
+      : 0;
 
     if (dateA !== dateB) return dateB - dateA;
 
@@ -165,14 +175,29 @@ function sortCards() {
 function filter() {
   const term = search.value.toLowerCase().trim();
   let visible = 0;
+
   cards.forEach(card => {
     const searchable = `${card.dataset.name} ${card.dataset.description} ${card.dataset.categoryLabel} ${card.dataset.tags || ""}`.toLowerCase();
+
     const matchesSearch = searchable.includes(term);
-    const matchesCategory = selected === "all" || card.dataset.category.split(" ").includes(selected) || (selected === "favourites" && card.dataset.favourite === "true");
-    const show = matchesSearch && matchesCategory;
+
+    const matchesCategory =
+      selected === "all" ||
+      card.dataset.category.split(" ").includes(selected) ||
+      (selected === "favourites" && card.dataset.favourite === "true");
+
+    const isHomepageProduct = card.dataset.homepage === "true";
+
+    const show =
+      matchesSearch &&
+      matchesCategory &&
+      (selected !== "home" || isHomepageProduct);
+
     card.style.display = show ? "block" : "none";
+
     if (show) visible += 1;
   });
+
   noResults.style.display = visible ? "none" : "block";
   results.textContent = `✨ ${visible} Handpicked Find${visible === 1 ? "" : "s"}`;
 }
