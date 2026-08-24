@@ -28,7 +28,7 @@
   "badgeStyle": "default",
   "order": 3,
   "featured": true,
-  "homepage": true,
+  "homepage": false,
   "homepageOrder": 3
 },
 {
@@ -60,7 +60,7 @@
   "badgeStyle": "default",
   "order": 5,
   "featured": true,
-  "homepage": true,
+  "homepage": false,
   "homepageOrder": 5
 },
 {
