@@ -11,7 +11,9 @@
     "badge": "Popular Pick",
     "badgeStyle": "orange",
     "order": 2,
-    "featured": true
+    "featured": true,
+    "homepage": true,
+    "homepageOrder": 2
   },
   {
   "id": "vacuum-bags",
@@ -25,7 +27,9 @@
   "badge": "Space Saver",
   "badgeStyle": "default",
   "order": 3,
-  "featured": true
+  "featured": true,
+  "homepage": true,
+  "homepageOrder": 3
 },
 {
   "id": "bluetooth-speaker",
@@ -39,7 +43,9 @@
   "badge": "Multi-Use",
   "badgeStyle": "orange",
   "order": 4,
-  "featured": true
+  "featured": true,
+  "homepage": true,
+  "homepageOrder": 4
 },
 {
   "id": "hob-protectors",
@@ -53,7 +59,9 @@
   "badge": "Kitchen Pick",
   "badgeStyle": "default",
   "order": 5,
-  "featured": true
+  "featured": true,
+  "homepage": true,
+  "homepageOrder": 5
 },
 {
   "id": "featured-gadget",
@@ -67,7 +75,9 @@
   "badge": "Featured Pick",
   "badgeStyle": "orange",
   "order": 6,
-  "featured": true
+  "featured": true,
+  "homepage": true,
+  "homepageOrder": 6
 },
 {
   "id": "gyro-ball",
@@ -82,6 +92,8 @@
   "badge": "Fitness Pick",
   "badgeStyle": "orange",
   "order": 1,
-  "featured": true
+  "featured": true,
+  "homepage": true,
+  "homepageOrder": 1
 }
 ]
