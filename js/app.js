@@ -183,6 +183,7 @@ function filter() {
 
     const matchesCategory =
       selected === "all" ||
+      selected === "home" ||
       card.dataset.category.split(" ").includes(selected) ||
       (selected === "favourites" && card.dataset.favourite === "true");
 
