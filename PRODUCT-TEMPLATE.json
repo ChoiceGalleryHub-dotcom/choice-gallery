@@ -1,0 +1,17 @@
+{
+  "id": "product-id",
+  "name": "Product Name",
+  "publishedAt": "YYYY-MM-DD",
+  "categories": ["home"],
+  "categoryLabel": "Home",
+  "tags": ["Everyday Essentials"],
+  "description": "Short useful product description.",
+  "image": "images/product-image.png",
+  "affiliateUrl": "AMAZON-AFFILIATE-LINK",
+  "badge": "Featured Pick",
+  "badgeStyle": "orange",
+  "order": 999,
+  "featured": true,
+  "homepage": false,
+  "homepageOrder": 999
+}
