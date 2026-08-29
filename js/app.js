@@ -97,6 +97,7 @@ async function loadProducts() {
     renderRecent();
     renderCompare();
     apply();
+    openLinkedProduct();
   } catch (error) {
     console.error("Product loading error:", error);
     results.textContent = "Products could not be loaded";
@@ -106,6 +107,27 @@ async function loadProducts() {
 }
 
 function cardById(id) { return cards.find(card => card.dataset.id === id); }
+
+function openLinkedProduct() {
+  const productId = new URLSearchParams(window.location.search).get("product");
+  if (!productId) return;
+
+  const card = cardById(productId);
+  if (!card) return;
+
+  search.value = "";
+  sort.value = "default";
+  selected = "all";
+
+  buttons.forEach(button => button.classList.remove("active"));
+  document.querySelector('[data-category="all"]')?.classList.add("active");
+
+  apply();
+
+  setTimeout(() => {
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 150);
+}
 function counts() { return read("liveeverywhere-click-counts", {}); }
 
 function renderTrending() {
