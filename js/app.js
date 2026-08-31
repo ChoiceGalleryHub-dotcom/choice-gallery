@@ -260,7 +260,7 @@ function renderCompare() {
 }
 
 async function shareProduct(card) {
-  const url = card.querySelector(".amazon").href;
+  const url = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(card.dataset.id)}`;
   const data = { title: `${card.dataset.name} | LiveEveryWhere`, text: `Take a look at ${card.dataset.name}.`, url };
   try {
     if (navigator.share) await navigator.share(data);
