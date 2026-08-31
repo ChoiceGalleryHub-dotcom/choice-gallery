@@ -59,7 +59,7 @@ function createProductCard(product) {
   const tags = Array.isArray(product.tags) ? product.tags.join(" ") : "";
   const badgeClass = product.badgeStyle === "orange" ? "badge orange" : "badge";
   return `
-<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}"data-published-at="${escapeHtml(product.publishedAt || "")}"data-homepage="${product.homepage === true ? "true" : "false"}"
+<article class="card" data-id="${escapeHtml(product.id)}" data-category="${escapeHtml(categories)}" data-category-label="${escapeHtml(product.categoryLabel)}" data-name="${escapeHtml(product.name)}" data-description="${escapeHtml(product.description)}" data-tags="${escapeHtml(tags)}" data-published-at="${escapeHtml(product.publishedAt || "")}" data-homepage="${product.homepage === true ? "true" : "false"}"
 data-homepage-order="${Number(product.homepageOrder) || 999}" data-image="${escapeHtml(product.image)}" data-order="${Number(product.order) || 0}" data-favourite="false">
   <div class="image-wrap">
     <div class="card-actions">
