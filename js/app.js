@@ -31,7 +31,7 @@ function read(key, fallback) {
 }
 
 function analyticsAllowed() {
-  return localStorage.getItem("liveeverywhere-analytics-consent") === "accepted";
+  return localStorage.getItem("choice-gallery-analytics-consent") === "accepted";
 }
 
 function track(name, params = {}) {
@@ -128,7 +128,7 @@ function openLinkedProduct() {
     card.scrollIntoView({ behavior: "smooth", block: "center" });
   }, 150);
 }
-function counts() { return read("liveeverywhere-click-counts", {}); }
+function counts() { return read("choice-gallery-click-counts", {}); }
 
 function renderTrending() {
   const clickCounts = counts();
@@ -145,14 +145,14 @@ function renderTrending() {
 }
 
 function saveRecent(card) {
-  let items = read("liveeverywhere-recent", []).filter(item => item.id !== card.dataset.id);
+  let items = read("choice-gallery-recent", []).filter(item => item.id !== card.dataset.id);
   items.unshift({ id: card.dataset.id, name: card.dataset.name });
-  localStorage.setItem("liveeverywhere-recent", JSON.stringify(items.slice(0, 5)));
+  localStorage.setItem("choice-gallery-recent", JSON.stringify(items.slice(0, 5)));
   renderRecent();
 }
 
 function renderRecent() {
-  const items = read("liveeverywhere-recent", []);
+  const items = read("choice-gallery-recent", []);
   recentList.innerHTML = "";
   recentSection.classList.toggle("visible", items.length > 0);
   items.forEach(item => {
@@ -239,7 +239,7 @@ function apply() {
     hasSearch || hideForCategory ? "none" : "";
 }
 }
-function compareIds() { return read("liveeverywhere-compare", []); }
+function compareIds() { return read("choice-gallery-compare", []); }
 
 function renderCompare() {
   const ids = compareIds();
@@ -261,7 +261,7 @@ function renderCompare() {
 
 async function shareProduct(card) {
   const url = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(card.dataset.id)}`;
-  const data = { title: `${card.dataset.name} | LiveEveryWhere`, text: `Take a look at ${card.dataset.name}.`, url };
+  const data = { title: `${card.dataset.name} | Choice Gallery`, text: `Take a look at ${card.dataset.name}.`, url };
   try {
     if (navigator.share) await navigator.share(data);
     else { await navigator.clipboard.writeText(url); notify("Product link copied"); }
@@ -272,7 +272,7 @@ async function shareProduct(card) {
 }
 
 function initialiseProductFeatures() {
-  const savedFavourites = read("liveeverywhere-favourites", []);
+  const savedFavourites = read("choice-gallery-favourites", []);
   document.querySelectorAll(".fav").forEach(button => {
     const card = button.closest(".card");
     const id = card.dataset.id;
@@ -281,9 +281,9 @@ function initialiseProductFeatures() {
       button.classList.toggle("active");
       const active = button.classList.contains("active");
       card.dataset.favourite = String(active);
-      let list = read("liveeverywhere-favourites", []);
+      let list = read("choice-gallery-favourites", []);
       list = active ? [...new Set([...list, id])] : list.filter(item => item !== id);
-      localStorage.setItem("liveeverywhere-favourites", JSON.stringify(list));
+      localStorage.setItem("choice-gallery-favourites", JSON.stringify(list));
       notify(active ? "Added to favourites" : "Removed from favourites");
       track("favourite_changed", { product_name: card.dataset.name, favourite_status: active ? "added" : "removed" });
       filter();
@@ -300,7 +300,7 @@ function initialiseProductFeatures() {
         if (ids.length >= 3) { notify("Compare up to 3 products"); return; }
         ids.push(id); notify("Added to comparison");
       }
-      localStorage.setItem("liveeverywhere-compare", JSON.stringify(ids));
+      localStorage.setItem("choice-gallery-compare", JSON.stringify(ids));
       renderCompare();
       track("compare_selection_changed", { product_name: card.dataset.name, selected_count: ids.length });
     };
@@ -328,7 +328,7 @@ function initialiseProductFeatures() {
       const card = button.closest(".card");
       const clickCounts = counts();
       clickCounts[card.dataset.id] = (clickCounts[card.dataset.id] || 0) + 1;
-      localStorage.setItem("liveeverywhere-click-counts", JSON.stringify(clickCounts));
+      localStorage.setItem("choice-gallery-click-counts", JSON.stringify(clickCounts));
       saveRecent(card);
       renderTrending();
       track("amazon_click", { product_name: button.dataset.product, product_category: card.dataset.categoryLabel, link_location: "product_card" });
@@ -389,7 +389,7 @@ document.getElementById("clearFilters").onclick = () => {
 };
 
 document.getElementById("clearComparison").onclick = () => {
-  localStorage.removeItem("liveeverywhere-compare");
+  localStorage.removeItem("choice-gallery-compare");
   renderCompare();
 };
 
@@ -411,14 +411,14 @@ document.getElementById("openComparison").onclick = () => {
 document.querySelectorAll("[data-close]").forEach(button => button.onclick = () => closeModal(button.dataset.close));
 document.querySelectorAll(".modal").forEach(modal => modal.onclick = event => { if (event.target === modal) closeModal(modal.id); });
 document.onkeydown = event => { if (event.key === "Escape") document.querySelectorAll(".modal.open").forEach(modal => closeModal(modal.id)); };
-document.getElementById("clearRecent").onclick = () => { localStorage.removeItem("liveeverywhere-recent"); renderRecent(); };
+document.getElementById("clearRecent").onclick = () => { localStorage.removeItem("choice-gallery-recent"); renderRecent(); };
 
-if (localStorage.getItem("liveeverywhere-theme") === "dark") { document.body.classList.add("dark"); theme.textContent = "☀️"; }
+if (localStorage.getItem("choice-gallery-theme") === "dark") { document.body.classList.add("dark"); theme.textContent = "☀️"; }
 theme.onclick = () => {
   document.body.classList.toggle("dark");
   const dark = document.body.classList.contains("dark");
   theme.textContent = dark ? "☀️" : "🌙";
-  localStorage.setItem("liveeverywhere-theme", dark ? "dark" : "light");
+  localStorage.setItem("choice-gallery-theme", dark ? "dark" : "light");
 };
 
 menuButton.onclick = () => {
@@ -429,7 +429,7 @@ mobileMenu.querySelectorAll("a").forEach(link => link.onclick = () => { mobileMe
 window.onscroll = () => back.classList.toggle("visible", window.scrollY > 650);
 back.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-const consent = localStorage.getItem("liveeverywhere-analytics-consent");
+const consent = localStorage.getItem("choice-gallery-analytics-consent");
 
 if (consent === "accepted" || consent === "declined") {
     cookie.style.display = "none";
@@ -437,13 +437,13 @@ if (consent === "accepted" || consent === "declined") {
     cookie.style.display = "block";
 }
 document.getElementById("acceptAnalytics").onclick = () => {
-  localStorage.setItem("liveeverywhere-analytics-consent", "accepted");
+  localStorage.setItem("choice-gallery-analytics-consent", "accepted");
   gtag("consent", "update", { analytics_storage: "granted" });
   cookie.style.display = "none";
   notify("Analytics accepted");
 };
 document.getElementById("declineAnalytics").onclick = () => {
-  localStorage.setItem("liveeverywhere-analytics-consent", "declined");
+  localStorage.setItem("choice-gallery-analytics-consent", "declined");
   gtag("consent", "update", { analytics_storage: "denied" });
   cookie.style.display = "none";
   notify("Analytics declined");
